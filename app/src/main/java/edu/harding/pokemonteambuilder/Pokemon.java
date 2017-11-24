@@ -12,7 +12,7 @@ public class Pokemon {
     private String mType;
     List<Move> mLearnedMoves;
     List<Pair<String, String>> mAbilities;
-    
+
     public Bitmap getThumbnail() {
         return mThumbnail;
     }
