@@ -8,4 +8,10 @@
     <string name="pokemon_6">Pokemon 6</string>
     <string name="choose">Choose</string>
     <string name="build_trainer_card">Build Trainer Card</string>
+    <string name="ability">Ability:</string>
+    <string name="hold_item">Hold Item:</string>
+    <string name="moves">Moves:</string>
+    <string name="move_1">Move 1</string>
+    <string name="move_2">Move 2</string>
+    <string name="choose_move">Choose</string>
 </resources>
