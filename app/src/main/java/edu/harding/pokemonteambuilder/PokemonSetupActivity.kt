@@ -11,7 +11,11 @@ class PokemonSetupActivity : AppCompatActivity() {
         setContentView(R.layout.activity_pokemon_setup)
     }
 
-    fun choosePokemon1(view: View) {}
+    fun choosePokemon1(view: View) {
 
-    fun choosePokemon2(view: View) {}
+    }
+
+    fun choosePokemon2(view: View) {
+
+    }
 }
