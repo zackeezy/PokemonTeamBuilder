@@ -18,48 +18,67 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent" />
 
-    <TextView
-        android:id="@+id/abilityTextView"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:id="@+id/abilityLinearLayout"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="@string/ability"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar"
-        app:layout_constraintLeft_toLeftOf="parent"/>
+        android:orientation="horizontal"
+        app:layout_constraintTop_toBottomOf="@id/toolbar"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        tools:layout_editor_absoluteY="0dp"
+        tools:layout_editor_absoluteX="8dp">
 
-    <android.support.v7.widget.DropDownListView
-        android:layout_width="wrap_content"
+        <TextView
+            android:id="@+id/abilityTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/ability" />
+
+        <Spinner
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:layout_editor_absoluteY="0dp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/itemLinearLayout"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        app:layout_constraintRight_toRightOf="parent">
+        app:layout_constraintTop_toBottomOf="@+id/abilityLinearLayout"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:orientation="horizontal">
 
-    </android.support.v7.widget.DropDownListView>
+        <TextView
+            android:id="@+id/itemTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/hold_item" />
 
-    <TextView
-        android:id="@+id/itemTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/hold_item"
-        app:layout_constraintTop_toBottomOf="@+id/abilityTextView"
-        app:layout_constraintLeft_toLeftOf="parent"/>
+        <Spinner
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:layout_editor_absoluteY="0dp" />
 
-    <android.support.v7.widget.DropDownListView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintRight_toRightOf="parent">
-
-    </android.support.v7.widget.DropDownListView>
+    </LinearLayout>
 
     <TextView
         android:id="@+id/movesTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/moves"
-        app:layout_constraintTop_toBottomOf="@+id/itemTextView"
+        app:layout_constraintTop_toBottomOf="@+id/itemLinearLayout"
         app:layout_constraintLeft_toLeftOf="parent"/>
 
     <LinearLayout
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:id="@+id/move1">
+        android:id="@+id/move1"
+        app:layout_constraintTop_toBottomOf="@+id/movesTextView"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent">
 
         <TextView
             android:id="@+id/move1TextView"
@@ -77,9 +96,12 @@
     </LinearLayout>
 
     <LinearLayout
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:id="@+id/move2">
+        android:id="@+id/move2"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/move1">
 
         <TextView
             android:id="@+id/move2TextView"
@@ -88,9 +110,56 @@
             android:text="@string/move_2"/>
 
         <Button
+            android:id="@+id/move2Button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:onClick="choosePokemon2"
+            android:text="@string/choose_move"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/move3"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/move2">
+
+        <TextView
+            android:id="@+id/move3TextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/move_2"/>
+
+        <Button
+            android:id="@+id/move3Button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="choosePokemon3"
+            android:text="@string/choose_move"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/move4"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/move3">
+
+        <TextView
+            android:id="@+id/move4TextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/move_2"/>
+
+        <Button
+            android:id="@+id/move4Button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="choosePokemon4"
             android:text="@string/choose_move"/>
 
     </LinearLayout>
