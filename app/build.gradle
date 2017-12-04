@@ -35,4 +35,5 @@ dependencies {
     testCompile 'junit:junit:4.12'
 
     compile 'me.sargunvohra.lib:pokekotlin:2.3.0'
+    compile "org.jetbrains.anko:anko:0.10.3"
 }
