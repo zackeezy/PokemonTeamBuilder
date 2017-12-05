@@ -7,20 +7,155 @@
     tools:context="edu.harding.pokemonteambuilder.TrainerCardActivity">
 
     <android.support.constraint.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:id="@+id/photoConstraintLayout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent">
 
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:paddingLeft="20dp"
             android:onClick="takePhoto"
-            />
+            android:id="@+id/userPhotoImageView"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@id/userPhotoButton"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:minHeight="140dp"
+            android:maxHeight="140dp"
+            android:minWidth="140dp"
+            android:maxWidth="140dp"/>
 
         <Button
+            android:id="@+id/userPhotoButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/take_photo"/>
+            android:text="@string/take_photo"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintLeft_toRightOf="@+id/userPhotoImageView"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:onClick="launchCamera"/>
 
     </android.support.constraint.ConstraintLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/name"
+        android:id="@+id/nameTextView"
+        app:layout_constraintTop_toBottomOf="@+id/photoConstraintLayout"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"/>
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/userNameEditText"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toBottomOf="@+id/nameTextView"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent" />
+
+    <LinearLayout
+        android:id="@+id/pokemonLinearLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/userNameEditText"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/pokemon1ImageView"
+            android:minHeight="60dp"
+            android:maxHeight="60dp"
+            android:minWidth="60dp"
+            android:maxWidth="60dp"/>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/pokemon2ImageView"
+            android:minHeight="60dp"
+            android:maxHeight="60dp"
+            android:minWidth="60dp"
+            android:maxWidth="60dp"/>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/pokemon3ImageView"
+            android:minHeight="60dp"
+            android:maxHeight="60dp"
+            android:minWidth="60dp"
+            android:maxWidth="60dp"/>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/pokemon4ImageView"
+            android:minHeight="60dp"
+            android:maxHeight="60dp"
+            android:minWidth="60dp"
+            android:maxWidth="60dp"/>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/pokemon5ImageView"
+            android:minHeight="60dp"
+            android:maxHeight="60dp"
+            android:minWidth="60dp"
+            android:maxWidth="60dp"/>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/pokemon6ImageView"
+            android:minHeight="60dp"
+            android:maxHeight="60dp"
+            android:minWidth="60dp"
+            android:maxWidth="60dp"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/cardStyleLinearLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/pokemonLinearLayout"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/card_style"/>
+
+        <Spinner
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            
+
+        </Spinner>
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/generateButton"
+        android:onClick="generateTrainerCard"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/generate"
+        app:layout_constraintTop_toBottomOf="@+id/cardStyleLinearLayout"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent" />
 
 </android.support.constraint.ConstraintLayout>
