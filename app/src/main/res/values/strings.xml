@@ -18,4 +18,18 @@
     <string name="name">Name:</string>
     <string name="card_style">Card Style:</string>
     <string name="generate">Generate</string>
+    <string-array name="trainer_card_types">
+        <item>Primal Groudon</item>
+        <item>Primal Kyogre</item>
+        <item>Xerneas</item>
+        <item>Yveltal</item>
+        <item>Chesnaught</item>
+        <item>Delphox</item>
+        <item>Greninja</item>
+        <item>Lunala</item>
+        <item>Solgaleo</item>
+        <item>Team Instinct</item>
+        <item>Team Mystic</item>
+        <item>Team Valor</item>
+    </string-array>
 </resources>
