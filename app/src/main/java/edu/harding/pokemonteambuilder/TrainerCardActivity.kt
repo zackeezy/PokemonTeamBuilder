@@ -47,6 +47,8 @@ class TrainerCardActivity : AppCompatActivity() {
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
 
         trainerCardTypeSpinner.adapter = adapter
+
+
     }
 
     fun launchCamera(view: View){

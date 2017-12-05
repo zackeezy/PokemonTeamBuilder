@@ -1,5 +1,7 @@
 package edu.harding.pokemonteambuilder
 
+import android.content.Intent
+import android.content.SharedPreferences
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Debug
@@ -14,6 +16,7 @@ import java.io.Console
 class MainActivity : AppCompatActivity() {
     //val api: PokemonFetcher = PokemonFetcher()
     val mPokeApi: PokeApi = PokeApiClient()
+    var mTeam: PokemonTeam = PokemonTeam()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -22,17 +25,41 @@ class MainActivity : AppCompatActivity() {
 
     fun pokemonChoose(view: View) {
 
+
+
+        when(view.tag){
+            R.string.pokemon_1 -> {
+                mTeam.mPokemon1 = CustomPokemon()
+
+            }
+            R.string.pokemon_2 -> {
+                mTeam.mPokemon2 = CustomPokemon()
+
+            }
+            R.string.pokemon_3 -> {
+                mTeam.mPokemon3 = CustomPokemon()
+
+            }
+            R.string.pokemon_4 -> {
+                mTeam.mPokemon4 = CustomPokemon()
+
+            }
+            R.string.pokemon_5 -> {
+                mTeam.mPokemon5 = CustomPokemon()
+
+            }
+            R.string.pokemon_6 -> {
+                mTeam.mPokemon6 = CustomPokemon()
+
+            }
+        }
     }
 
     fun buildTrainerCard(view: View) {
-        doAsync {
-            Log.d("API", "starting...")
-            var p: Pokemon = mPokeApi.getPokemon(1)
-            Log.d("BULB", p.name)
-            Log.d("BULB", p.types.toString())
-            Log.d("BULB", p.moves.toString())
-            Log.d("BULB", p.abilities.toString())
-            Log.d("API", "done")
-        }
+        var intent = Intent(this, TrainerCardActivity::class.java)
+
+
+
+        startActivity(intent)
     }
 }

@@ -3,7 +3,7 @@ package edu.harding.pokemonteambuilder
 import android.graphics.Bitmap
 import android.util.Pair
 
-class Pokemon {
+class CustomPokemon {
 
     var thumbnail: Bitmap? = null
     var name: String? = null
