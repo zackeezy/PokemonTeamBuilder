@@ -3,6 +3,7 @@ package edu.harding.pokemonteambuilder
 import me.sargunvohra.lib.pokekotlin.client.PokeApi
 import me.sargunvohra.lib.pokekotlin.client.PokeApiClient
 import me.sargunvohra.lib.pokekotlin.model.*
+import java.util.*
 
 class PokemonFetcher {
     private var mPokeApi: PokeApi = PokeApiClient()
@@ -14,5 +15,13 @@ class PokemonFetcher {
     fun speciesToPokemon(species: PokemonSpecies): CustomPokemon {
         var pokemon = CustomPokemon()
         return pokemon
+    }
+
+    fun getPokemon() : ArrayList<CustomPokemon>{
+        var pokemonList: ArrayList<CustomPokemon> = ArrayList()
+        var pokemon: CustomPokemon = CustomPokemon()
+
+
+
     }
 }

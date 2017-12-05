@@ -5,6 +5,11 @@ import android.util.Pair
 
 class CustomPokemon {
 
+    fun CustomPokemon(name: String, type: String){
+        this.name = name
+        this.type = type
+    }
+
     var thumbnail: Bitmap? = null
     var name: String? = null
     var type: String? = null
