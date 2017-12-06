@@ -1,5 +1,6 @@
 package layout
 
+import android.content.Context
 import android.graphics.Color
 import android.os.Bundle
 import android.support.v4.app.Fragment
@@ -21,10 +22,15 @@ import org.jetbrains.anko.textColor
 import org.jetbrains.anko.uiThread
 
 
-class PokemonListFragment : Fragment() {
+class PokemonListFragment() : Fragment() {
 
     private lateinit var mView: View
 
+    var mContext: Context? = null
+
+    constructor(context: Context) : this() {
+        mContext = context
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) = super.onCreate(savedInstanceState)
 

@@ -19,7 +19,7 @@ class PokemonListActivity : AppCompatActivity() {
         mFragment = fragmentManager.findFragmentById(R.id.pokemon_list_container)
 
         if (mFragment == null) {
-            mFragment = PokemonListFragment()
+            mFragment = PokemonListFragment(this)
             fragmentManager.beginTransaction()
                     .add(R.id.pokemon_list_container, mFragment)
                     .commit()
