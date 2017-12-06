@@ -12,10 +12,9 @@ import me.sargunvohra.lib.pokekotlin.client.PokeApiClient
 import me.sargunvohra.lib.pokekotlin.model.Pokemon
 import org.jetbrains.anko.doAsync
 import java.io.Console
+import java.util.*
 
 class MainActivity : AppCompatActivity() {
-    //val api: PokemonFetcher = PokemonFetcher()
-    val mPokeApi: PokeApi = PokeApiClient()
     var mTeam: PokemonTeam = PokemonTeam()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -24,9 +23,6 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun pokemonChoose(view: View) {
-
-
-
         when(view.tag){
             R.string.pokemon_1 -> {
                 mTeam.mPokemon1 = CustomPokemon()
@@ -58,8 +54,13 @@ class MainActivity : AppCompatActivity() {
     fun buildTrainerCard(view: View) {
         var intent = Intent(this, TrainerCardActivity::class.java)
 
-
-
         startActivity(intent)
+    }
+
+    fun testAPI(view: View) {
+        var api: PokemonFetcher = PokemonFetcher()
+        doAsync {
+            Log.d("API", api.fetchAll().toString())
+        }
     }
 }
