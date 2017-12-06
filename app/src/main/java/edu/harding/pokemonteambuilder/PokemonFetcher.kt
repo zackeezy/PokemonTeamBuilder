@@ -18,6 +18,7 @@ class PokemonFetcher {
     fun fetchAll() : ArrayList<Pokemon>{
         var totalPokemon: Int = mPokeApi.getPokemonList(0, 0).count
         Log.d("API", totalPokemon.toString())
+        // TODO: Use getPokemonList(offset, limit) and increment instead of individual individual request
 
         return (1..20).mapTo(ArrayList()) { fetchPokemon(it)}
     }

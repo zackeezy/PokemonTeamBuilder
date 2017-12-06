@@ -74,11 +74,18 @@ class PokemonListFragment : Fragment() {
         }
 
         fun bind(p: CustomPokemon) {
+            var typeString: String
+
             mPokemon = p;
             mNameLabel.text = p.name
             mNameLabel.textColor = Color.WHITE
 
-            mTypeLabel.text = p.types.toString()
+            if (p.types.size == 2)
+                typeString = p.types[0] + "/" + p.types[1]
+            else
+                typeString = p.types[0]
+
+            mTypeLabel.text = typeString
             mTypeLabel.textColor = Color.WHITE
         }
 
