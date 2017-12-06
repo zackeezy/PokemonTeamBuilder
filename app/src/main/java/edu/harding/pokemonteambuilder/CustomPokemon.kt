@@ -3,6 +3,7 @@ package edu.harding.pokemonteambuilder
 import android.graphics.Bitmap
 import android.util.Pair
 import me.sargunvohra.lib.pokekotlin.model.Pokemon
+import java.util.*
 
 class CustomPokemon() {
 
@@ -15,12 +16,12 @@ class CustomPokemon() {
     // Kotlin equivalent to static function
     companion object {
         fun pokemonToCustomPokemon(p: Pokemon): CustomPokemon {
-            var c: CustomPokemon = CustomPokemon("", "")
+            var c: CustomPokemon = CustomPokemon()
 
             if (p.types.size == 2) {
-                c.type = p.types[0].toString() + "/" + p.types[1].toString()
+                //c.types = p.types[0].toString() + "/" + p.types[1].toString()
             } else {
-                c.type = p.types[0].toString()
+                //c.types = p.types[0].toString()
             }
 
             c.name = p.name
