@@ -8,7 +8,7 @@ class Move {
     var flavorText: String? = null
     var power: Int = 0
     var accuracy: Int = 0
-    var learnLevel: Int = 0 //-1 for TM and -2 for Tutor, including one-off tutors like Mega Kick or Blast Burn
+    var learnLevel: Int = 0 //-1 for TM and -2 for Tutor, including one-off tutors like Draco Meteor or Blast Burn
 
     constructor(name: String, flavorText: String, accuracy: Int) {
         this.name = name
