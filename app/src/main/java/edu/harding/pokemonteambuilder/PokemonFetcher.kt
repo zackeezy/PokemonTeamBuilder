@@ -51,15 +51,16 @@ class PokemonFetcher {
     }
 
 
-//    fun getPokemon() : ArrayList<CustomPokemon> {
-//        var pokemonList: ArrayList<CustomPokemon> = ArrayList()
-//        var pokemon: CustomPokemon
-//
-//        for (i: Int in 0..4) {
-//            pokemon = CustomPokemon("<name>", "<type>")
-//            pokemonList.add(pokemon)
-//        }
-//
-//        return pokemonList
-//    }
+    fun getPokemon() : ArrayList<CustomPokemon> {
+        var pokemonList: ArrayList<CustomPokemon> = ArrayList()
+        var pokemon: CustomPokemon = CustomPokemon()
+
+        pokemon.name = "Bulbasaur"
+        pokemon.types.add("Grass")
+        pokemon.types.add("Poison")
+        for(i: Int in 1..20)
+            pokemonList.add(pokemon)
+
+        return pokemonList
+    }
 }

@@ -10,6 +10,7 @@ import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ProgressBar
 import android.widget.TextView
 import java.util.ArrayList
 import edu.harding.pokemonteambuilder.CustomPokemon
@@ -28,6 +29,8 @@ class PokemonListFragment() : Fragment() {
 
     var mContext: Context? = null
 
+    var mProgress: ProgressBar? = null
+
     constructor(context: Context) : this() {
         mContext = context
     }
@@ -39,6 +42,9 @@ class PokemonListFragment() : Fragment() {
                               savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
         mView = inflater.inflate(R.layout.fragment_pokemon_list, container, false)
+
+        mProgress = ProgressBar(mContext)
+        mProgress
 
         fillRecycler()
         return mView
@@ -57,7 +63,7 @@ class PokemonListFragment() : Fragment() {
         recyclerView.addItemDecoration(separator)
 
         doAsync {
-            var adapter = PokemonAdapter(converter.customPokemonListFromAPI(api.fetchAll()))
+            var adapter = PokemonAdapter(api.getPokemon())
             uiThread { recyclerView.adapter = adapter }
         }
     }
