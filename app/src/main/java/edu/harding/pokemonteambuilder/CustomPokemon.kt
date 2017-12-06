@@ -3,17 +3,16 @@ package edu.harding.pokemonteambuilder
 import android.graphics.Bitmap
 import android.util.Pair
 
-class CustomPokemon {
+class CustomPokemon(name: String, type: String) {
 
-    fun CustomPokemon(name: String, type: String){
-        this.name = name
-        this.type = type
-    }
-
-    var thumbnail: Bitmap? = null
     var name: String? = null
     var type: String? = null
+    var thumbnail: Bitmap? = null
     internal var mLearnedMoves: List<Move>? = null
     internal var mAbilities: List<Pair<String, String>>? = null
 
+    init {
+        this.name = name
+        this.type = type
+    }
 }

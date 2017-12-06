@@ -1,5 +1,6 @@
 package edu.harding.pokemonteambuilder
 
+import android.app.ListActivity
 import android.content.Intent
 import android.content.SharedPreferences
 import android.support.v7.app.AppCompatActivity
@@ -25,27 +26,27 @@ class MainActivity : AppCompatActivity() {
     fun pokemonChoose(view: View) {
         when(view.tag){
             R.string.pokemon_1 -> {
-                mTeam.mPokemon1 = CustomPokemon()
+                mTeam.mPokemon1 = CustomPokemon("name", "type")
 
             }
             R.string.pokemon_2 -> {
-                mTeam.mPokemon2 = CustomPokemon()
+                mTeam.mPokemon2 = CustomPokemon("name", "type")
 
             }
             R.string.pokemon_3 -> {
-                mTeam.mPokemon3 = CustomPokemon()
+                mTeam.mPokemon3 = CustomPokemon("name", "type")
 
             }
             R.string.pokemon_4 -> {
-                mTeam.mPokemon4 = CustomPokemon()
+                mTeam.mPokemon4 = CustomPokemon("name", "type")
 
             }
             R.string.pokemon_5 -> {
-                mTeam.mPokemon5 = CustomPokemon()
+                mTeam.mPokemon5 = CustomPokemon("name", "type")
 
             }
             R.string.pokemon_6 -> {
-                mTeam.mPokemon6 = CustomPokemon()
+                mTeam.mPokemon6 = CustomPokemon("name", "type")
 
             }
         }
@@ -62,5 +63,10 @@ class MainActivity : AppCompatActivity() {
         doAsync {
             Log.d("API", api.fetchAll().toString())
         }
+    }
+
+    fun goToList(view: View) {
+        val intent = Intent(this, PokemonListActivity::class.java)
+        startActivity(intent)
     }
 }
