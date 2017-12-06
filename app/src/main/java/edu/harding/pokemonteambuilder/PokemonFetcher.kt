@@ -27,7 +27,11 @@ class PokemonFetcher {
         var pokemonList: ArrayList<CustomPokemon> = ArrayList()
         var pokemon: CustomPokemon
 
-        for (i: Int in 0..4) {
+        for (i: Int in 0..20) {
+            var p: Pokemon = fetchPokemon(i)
+            var customPokemon: CustomPokemon = CustomPokemon.pokemonToCustomPokemon(p)
+
+
             pokemon = CustomPokemon("<name>", "<type>")
             pokemonList.add(pokemon)
         }
