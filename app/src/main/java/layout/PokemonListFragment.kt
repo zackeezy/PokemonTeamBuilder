@@ -6,7 +6,6 @@ import android.support.v4.app.Fragment
 import android.support.v7.widget.DividerItemDecoration
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -73,6 +72,7 @@ class PokemonListFragment : Fragment() {
             mTypeLabel = itemView.findViewById(R.id.pokemon_type_textview) as TextView
         }
 
+
         fun bind(p: CustomPokemon) {
             var typeString: String
 
@@ -88,6 +88,7 @@ class PokemonListFragment : Fragment() {
             mTypeLabel.text = typeString
             mTypeLabel.textColor = Color.WHITE
         }
+
 
         override fun onClick(view: View?) {
             toast("Pokemon list item touched")

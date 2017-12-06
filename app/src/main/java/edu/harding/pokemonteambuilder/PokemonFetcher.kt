@@ -1,6 +1,7 @@
 package edu.harding.pokemonteambuilder
 
 import android.util.Log
+import kotlinx.coroutines.experimental.Delay
 import me.sargunvohra.lib.pokekotlin.client.PokeApi
 import me.sargunvohra.lib.pokekotlin.client.PokeApiClient
 import me.sargunvohra.lib.pokekotlin.model.*
@@ -15,12 +16,38 @@ class PokemonFetcher {
     fun fetchPokemon(pokedexIndex: Int): Pokemon = mPokeApi.getPokemon(pokedexIndex)
 
 
-    fun fetchAll() : ArrayList<Pokemon>{
-        var totalPokemon: Int = mPokeApi.getPokemonList(0, 0).count
-        Log.d("API", totalPokemon.toString())
-        // TODO: Use getPokemonList(offset, limit) and increment instead of individual individual request
+    private fun fetchPokemonListByURL(url: String) {
 
-        return (1..20).mapTo(ArrayList()) { fetchPokemon(it)}
+    }
+
+
+    fun fetchAll() : ArrayList<Pokemon>{
+        // TODO: Use getPokemonList(offset, limit) and increment instead of individual individual request
+        var offset = 0
+        var limit = 20
+        var segment: NamedApiResourceList
+        var count: Int
+
+        try {
+            segment = mPokeApi.getPokemonList(offset, limit)
+            count = segment.count
+        } catch (e: Exception) { count = 94}
+
+//        do {
+//
+//        } while (segment.next != null)
+
+        var pokemonList = ArrayList<Pokemon>()
+        for (i: Int in 1..count) {
+            try {
+                Thread.sleep(1000)
+                 pokemonList.add(fetchPokemon(i))
+                Log.d("API", "Fetching ${i}")
+            } catch (e: Exception) { Log.d("API ERROR", e.toString()) }
+        }
+        return pokemonList
+
+        //return (1..count).mapTo(ArrayList()) { fetchPokemon(it)}
     }
 
 
