@@ -2,17 +2,20 @@ package edu.harding.pokemonteambuilder
 
 import android.graphics.Bitmap
 import android.util.Pair
+import java.util.*
 
-class CustomPokemon(name: String, type: String) {
+class CustomPokemon() {
 
-    var name: String? = null
-    var type: String? = null
+    var name: String
+    var types: ArrayList<String>
     var thumbnail: Bitmap? = null
-    internal var mLearnedMoves: List<Move>? = null
-    internal var mAbilities: List<Pair<String, String>>? = null
+    internal var mLearnedMoves: ArrayList<Move>
+    internal var mAbilities: ArrayList<Pair<String, String>>
 
     init {
-        this.name = name
-        this.type = type
+        this.name = ""
+        this.types = ArrayList()
+        this.mLearnedMoves = ArrayList()
+        this.mAbilities = ArrayList()
     }
 }

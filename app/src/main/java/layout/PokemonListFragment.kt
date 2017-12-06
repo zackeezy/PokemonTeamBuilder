@@ -13,10 +13,13 @@ import android.view.ViewGroup
 import android.widget.TextView
 import java.util.ArrayList
 import edu.harding.pokemonteambuilder.CustomPokemon
+import edu.harding.pokemonteambuilder.PokemonConverter
 import edu.harding.pokemonteambuilder.PokemonFetcher
 import edu.harding.pokemonteambuilder.R
+import org.jetbrains.anko.doAsync
 import org.jetbrains.anko.support.v4.toast
 import org.jetbrains.anko.textColor
+import org.jetbrains.anko.uiThread
 
 
 class PokemonListFragment : Fragment() {
@@ -39,6 +42,7 @@ class PokemonListFragment : Fragment() {
 
     private fun fillRecycler() {
         val api = PokemonFetcher()
+        val converter = PokemonConverter()
 
         var recyclerView: RecyclerView = mView.findViewById(R.id.pokemon_list_recycler)
         recyclerView.layoutManager = LinearLayoutManager(activity)
@@ -47,8 +51,10 @@ class PokemonListFragment : Fragment() {
         var separator = DividerItemDecoration(recyclerView.context, 1)
         recyclerView.addItemDecoration(separator)
 
-        var adapter = PokemonAdapter(api.getPokemon())
-        recyclerView.adapter = adapter
+        doAsync {
+            var adapter = PokemonAdapter(converter.customPokemonListFromAPI(api.fetchAll()))
+            uiThread { recyclerView.adapter = adapter }
+        }
     }
 
     // For RecyclerView
@@ -72,7 +78,7 @@ class PokemonListFragment : Fragment() {
             mNameLabel.text = p.name
             mNameLabel.textColor = Color.WHITE
 
-            mTypeLabel.text = p.type
+            mTypeLabel.text = p.types.toString()
             mTypeLabel.textColor = Color.WHITE
         }
 

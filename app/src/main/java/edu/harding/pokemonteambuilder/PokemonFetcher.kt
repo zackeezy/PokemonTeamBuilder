@@ -19,19 +19,19 @@ class PokemonFetcher {
         var totalPokemon: Int = mPokeApi.getPokemonList(0, 0).count
         Log.d("API", totalPokemon.toString())
 
-        return (0..19).mapTo(ArrayList()) { fetchPokemon(it) }
+        return (1..20).mapTo(ArrayList()) { fetchPokemon(it)}
     }
 
 
-    fun getPokemon() : ArrayList<CustomPokemon> {
-        var pokemonList: ArrayList<CustomPokemon> = ArrayList()
-        var pokemon: CustomPokemon
-
-        for (i: Int in 0..4) {
-            pokemon = CustomPokemon("<name>", "<type>")
-            pokemonList.add(pokemon)
-        }
-
-        return pokemonList
-    }
+//    fun getPokemon() : ArrayList<CustomPokemon> {
+//        var pokemonList: ArrayList<CustomPokemon> = ArrayList()
+//        var pokemon: CustomPokemon
+//
+//        for (i: Int in 0..4) {
+//            pokemon = CustomPokemon("<name>", "<type>")
+//            pokemonList.add(pokemon)
+//        }
+//
+//        return pokemonList
+//    }
 }
