@@ -20,45 +20,43 @@ import org.jetbrains.anko.textColor
 
 
 class PokemonListFragment : Fragment() {
-    private var mRecyclerView: RecyclerView? = null
-    private var mView: View? = null
+
+    private lateinit var mView: View
 
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
+    override fun onCreate(savedInstanceState: Bundle?) = super.onCreate(savedInstanceState)
 
 
-    override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?,
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
-        mView = inflater!!.inflate(R.layout.fragment_pokemon_list, container, false)
+        mView = inflater.inflate(R.layout.fragment_pokemon_list, container, false)
+
         fillRecycler()
         return mView
     }
 
 
     private fun fillRecycler() {
-        Log.d("FRAGMENT", "fillRecycler()")
         val api = PokemonFetcher()
 
-        mRecyclerView = mView?.findViewById(R.id.list_recycler)
-        mRecyclerView?.layoutManager = LinearLayoutManager(activity)
+        var recyclerView: RecyclerView = mView.findViewById(R.id.pokemon_list_recycler)
+        recyclerView.layoutManager = LinearLayoutManager(activity)
 
         // Separator between list items
-        var separator = DividerItemDecoration(mRecyclerView?.context, 1)
-        mRecyclerView?.addItemDecoration(separator)
+        var separator = DividerItemDecoration(recyclerView.context, 1)
+        recyclerView.addItemDecoration(separator)
 
         var adapter = PokemonAdapter(api.getPokemon())
-        mRecyclerView!!.adapter = adapter
+        recyclerView.adapter = adapter
     }
 
     // For RecyclerView
-    private inner class PokemonHolder(inflater: LayoutInflater?, parent: ViewGroup) :
-            RecyclerView.ViewHolder(inflater?.inflate(R.layout.list_item_pokemon, parent, false)),
+    private inner class PokemonHolder(inflater: LayoutInflater, parent: ViewGroup) :
+            RecyclerView.ViewHolder(inflater.inflate(R.layout.list_item_pokemon, parent, false)),
             View.OnClickListener {
 
-        private var mPokemon: CustomPokemon? = null
+        private lateinit var mPokemon: CustomPokemon
         private val mNameLabel: TextView
         private val mTypeLabel: TextView
 
@@ -69,12 +67,12 @@ class PokemonListFragment : Fragment() {
             mTypeLabel = itemView.findViewById(R.id.pokemon_type_textview) as TextView
         }
 
-        fun bind(p: CustomPokemon?) {
+        fun bind(p: CustomPokemon) {
             mPokemon = p;
-            mNameLabel.text = p?.name
+            mNameLabel.text = p.name
             mNameLabel.textColor = Color.WHITE
 
-            mTypeLabel.text = p?.type
+            mTypeLabel.text = p.type
             mTypeLabel.textColor = Color.WHITE
         }
 
@@ -84,21 +82,21 @@ class PokemonListFragment : Fragment() {
     }
 
     // For RecyclerView
-    private inner class PokemonAdapter(private val mPokemonList: ArrayList<CustomPokemon>?) :
+    private inner class PokemonAdapter(private val mPokemonList: ArrayList<CustomPokemon>) :
             RecyclerView.Adapter<PokemonHolder>() {
 
-        override fun getItemCount(): Int = mPokemonList!!.count()
+        override fun getItemCount(): Int = mPokemonList.count()
 
 
         override fun onCreateViewHolder(parent: ViewGroup, ViewType: Int): PokemonHolder {
-            val layoutInflater = LayoutInflater.from(getActivity())
+            val layoutInflater = LayoutInflater.from(activity)
 
             return PokemonHolder(layoutInflater, parent)
         }
 
 
         override fun onBindViewHolder(holder: PokemonHolder, index: Int) {
-            val p = mPokemonList?.get(index)
+            val p = mPokemonList.get(index)
             holder.bind(p)
         }
     }

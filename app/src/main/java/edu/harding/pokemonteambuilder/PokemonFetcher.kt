@@ -28,7 +28,7 @@ class PokemonFetcher {
         var pokemon: CustomPokemon
 
         for (i: Int in 0..4) {
-            pokemon = CustomPokemon("name", "string")
+            pokemon = CustomPokemon("<name>", "<type>")
             pokemonList.add(pokemon)
         }
 
