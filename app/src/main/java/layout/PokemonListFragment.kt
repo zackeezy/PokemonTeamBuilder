@@ -44,9 +44,6 @@ class PokemonListFragment() : Fragment() {
         // Inflate the layout for this fragment
         mView = inflater.inflate(R.layout.fragment_pokemon_list, container, false)
 
-        mProgress = ProgressBar(mContext)
-        mProgress
-
         fillRecycler()
         return mView
     }
@@ -107,8 +104,10 @@ class PokemonListFragment() : Fragment() {
             var name = pokemon_name_textview.text.toString()
             var type = pokemon_type_textview.text.split("/")
             var pokemon = CustomPokemon(name, type as ArrayList<String>)
-            var i = Intent(mContext,PokemonSetupActivity::class.java)
-            var pla = mContext as PokemonListActivity
+            var i = Intent()
+            i.putExtra("Pokemon", pokemon as Serializable)
+            i.putExtra("pokemon", (activity as PokemonListActivity).intent.extras["pokemon"] as Int)
+            var pla = activity as PokemonListActivity
             pla.setResult(0,i)
             pla.finish()
         }
@@ -135,7 +134,7 @@ class PokemonListFragment() : Fragment() {
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        var pla = mContext as PokemonListActivity
+        var pla = activity as PokemonListActivity
         var pokemon = pla.intent.extras["Pokemon"] as CustomPokemon
         var i = Intent()
         i.putExtra("Pokemon",pokemon as Serializable)
