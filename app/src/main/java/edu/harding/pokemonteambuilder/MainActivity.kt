@@ -8,6 +8,7 @@ import android.util.Log
 import android.view.View
 import android.support.v7.widget.Toolbar
 import android.view.Menu
+import android.view.MenuInflater
 import android.view.MenuItem
 import org.jetbrains.anko.doAsync
 import java.util.*
@@ -20,6 +21,24 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         setupActionBar()
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        var inflator = menuInflater
+        inflator.inflate(R.menu.items, menu)
+
+
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem?): Boolean = when (item?.itemId) {
+        R.id.about_item -> {
+            goToAboutActivity()
+            true
+        }
+        else -> {
+            super.onOptionsItemSelected(item)
+        }
     }
 
     fun pokemonChoose(view: View) {
@@ -51,23 +70,8 @@ class MainActivity : AppCompatActivity() {
     private fun setupActionBar() {
         var ab: Toolbar = findViewById(R.id.toolbar)
         ab.title = "Pokemon Team Builder"
+        setSupportActionBar(ab)
     }
-
-    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        menuInflater.inflate(R.menu.actionbar_menu, menu)
-        return super.onCreateOptionsMenu(menu)
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem?): Boolean = when (item?.itemId) {
-        R.id.about_item -> {
-            goToAboutActivity()
-            true
-        }
-        else -> {
-            super.onOptionsItemSelected(item)
-        }
-    }
-
 
     fun buildTrainerCard(view: View) {
         var intent = Intent(this, TrainerCardActivity::class.java)
