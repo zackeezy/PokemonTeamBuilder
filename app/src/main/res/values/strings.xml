@@ -43,4 +43,6 @@
     <string name="move_4_tag">Move 4</string>
     <string name="about">About</string>
     <string name="about_info"><![CDATA[Pokemon Team Builder - Bryan Cuneo & Zack McKee]]></string>
+    <string name="power">Power:</string>
+    <string name="accuracy">Accuracy:</string>
 </resources>
