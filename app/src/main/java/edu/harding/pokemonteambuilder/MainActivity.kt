@@ -1,5 +1,6 @@
 package edu.harding.pokemonteambuilder
 
+import android.app.Activity
 import android.app.ListActivity
 import android.content.Intent
 import android.content.SharedPreferences
@@ -24,32 +25,28 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun pokemonChoose(view: View) {
+        var intent = Intent(this, PokemonListActivity::class.java)
         when(view.tag){
             R.string.pokemon_1 -> {
-                mTeam.mPokemon1 = CustomPokemon()
-
+                intent.putExtra("pokemon", 1)
             }
             R.string.pokemon_2 -> {
-                mTeam.mPokemon2 = CustomPokemon()
-
+                intent.putExtra("pokemon", 2)
             }
             R.string.pokemon_3 -> {
-                mTeam.mPokemon3 = CustomPokemon()
-
+                intent.putExtra("pokemon", 3)
             }
             R.string.pokemon_4 -> {
-                mTeam.mPokemon4 = CustomPokemon()
-
+                intent.putExtra("pokemon", 4)
             }
             R.string.pokemon_5 -> {
-                mTeam.mPokemon5 = CustomPokemon()
-
+                intent.putExtra("pokemon", 5)
             }
             R.string.pokemon_6 -> {
-                mTeam.mPokemon6 = CustomPokemon()
-
+                intent.putExtra("pokemon", 6)
             }
         }
+        startActivityForResult(intent,0)
     }
 
     fun buildTrainerCard(view: View) {
@@ -59,14 +56,20 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun testAPI(view: View) {
-        var api = PokemonFetcher()
-        doAsync {
-            Log.d("API", api.fetchAll().toString())
-        }
+
     }
 
     fun goToList(view: View) {
         val intent = Intent(this, PokemonListActivity::class.java)
         startActivity(intent)
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        if(resultCode == 0){
+            var pokemon: CustomPokemon = data!!.extras["Pokemon"] as CustomPokemon
+
+        }
+
+        super.onActivityResult(requestCode, resultCode, data)
     }
 }
