@@ -26,7 +26,8 @@
             android:name=".TrainerCardActivity"
             android:parentActivityName=".MainActivity" />
         <activity android:name=".MoveSetupActivity" />
-        <activity android:name=".AboutActivity"></activity>
+        <activity android:name=".AboutActivity" />
+        <activity android:name=".SettingsActivity"></activity>
     </application>
 
 </manifest>

@@ -36,6 +36,10 @@ class MainActivity : AppCompatActivity() {
             goToAboutActivity()
             true
         }
+        R.id.settings_item -> {
+            goToSettingsActivity()
+            true
+        }
         else -> {
             super.onOptionsItemSelected(item)
         }
@@ -101,8 +105,13 @@ class MainActivity : AppCompatActivity() {
         startActivity(intent)
     }
 
-    fun goToAboutActivity() {
+    private fun goToAboutActivity() {
         var intent = Intent(this, AboutActivity::class.java)
+        startActivity(intent)
+    }
+
+    private fun goToSettingsActivity() {
+        var intent = Intent(this, SettingsActivity::class.java)
         startActivity(intent)
     }
 
