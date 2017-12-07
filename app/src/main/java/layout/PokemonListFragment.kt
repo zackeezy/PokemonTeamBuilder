@@ -52,6 +52,7 @@ class PokemonListFragment() : Fragment() {
 
     private fun fillRecycler() {
         var db = PokemonDatabase(this.activity.getPreferences(MODE_PRIVATE))
+        var api = PokemonFetcher()
 
         var recyclerView: RecyclerView = mView.findViewById(R.id.pokemon_list_recycler)
         recyclerView.layoutManager = LinearLayoutManager(activity)
@@ -60,24 +61,23 @@ class PokemonListFragment() : Fragment() {
         var separator = DividerItemDecoration(recyclerView.context, 1)
         recyclerView.addItemDecoration(separator)
 
-<<<<<<< HEAD
-        try {
-            var adapter = PokemonAdapter(db.load())
-            recyclerView.adapter = adapter
-        } catch (e: Exception) {
-            Log.d("RECYCLER", e.toString())
-            alert("Please update your database") {
-                title = "DB Error"
-                okButton { }
-            }.show()
-=======
+//<<<<<<< HEAD
+//        try {
+//            var adapter = PokemonAdapter(db.load())
+//            recyclerView.adapter = adapter
+//        } catch (e: Exception) {
+//            Log.d("RECYCLER", e.toString())
+//            alert("Please update your database") {
+//                title = "DB Error"
+//                okButton { }
+//            }.show()
+//=======
         doAsync {
             var adapter = PokemonAdapter(CustomPokemon.pokemonListToCustomPokemonList(api.fetchAll()))
             uiThread {
                 recyclerView.adapter = adapter
                 progressBar.visibility = View.GONE
             }
->>>>>>> 9e8eecb15740fba2cd2a8f3b5702631fd739e247
         }
     }
 
