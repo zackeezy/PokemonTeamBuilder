@@ -88,9 +88,10 @@
 
         <Button
             android:id="@+id/move1Button"
+            android:tag="@string/move_1_tag"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:onClick="choosePokemon1"
+            android:onClick="chooseMove"
             android:text="@string/choose_move"/>
 
     </LinearLayout>
@@ -111,9 +112,10 @@
 
         <Button
             android:id="@+id/move2Button"
+            android:tag="@string/move_2_tag"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:onClick="choosePokemon2"
+            android:onClick="chooseMove"
             android:text="@string/choose_move"/>
 
     </LinearLayout>
@@ -130,13 +132,14 @@
             android:id="@+id/move3TextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/move_2"/>
+            android:text="@string/move_3"/>
 
         <Button
             android:id="@+id/move3Button"
+            android:tag="@string/move_3_tag"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:onClick="choosePokemon3"
+            android:onClick="chooseMove"
             android:text="@string/choose_move"/>
 
     </LinearLayout>
@@ -153,13 +156,14 @@
             android:id="@+id/move4TextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/move_2"/>
+            android:text="@string/move_4"/>
 
         <Button
             android:id="@+id/move4Button"
+            android:tag="@string/move_4_tag"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:onClick="choosePokemon4"
+            android:onClick="chooseMove"
             android:text="@string/choose_move"/>
 
     </LinearLayout>
