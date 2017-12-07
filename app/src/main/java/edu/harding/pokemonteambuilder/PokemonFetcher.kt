@@ -1,7 +1,6 @@
 package edu.harding.pokemonteambuilder
 
 import android.util.Log
-import kotlinx.coroutines.experimental.Delay
 import me.sargunvohra.lib.pokekotlin.client.PokeApi
 import me.sargunvohra.lib.pokekotlin.client.PokeApiClient
 import me.sargunvohra.lib.pokekotlin.model.*
@@ -31,20 +30,21 @@ class PokemonFetcher {
         try {
             segment = mPokeApi.getPokemonList(offset, limit)
             count = segment.count
-        } catch (e: Exception) { count = 94}
+        } catch (e: Exception) { count = 940}
 
 //        do {
 //
 //        } while (segment.next != null)
 
         var pokemonList = ArrayList<Pokemon>()
-        for (i: Int in 1..count) {
+        for (i: Int in 1..33) {
             try {
                 Thread.sleep(1000)
                  pokemonList.add(fetchPokemon(i))
-                Log.d("API", "Fetching ${i}")
-            } catch (e: Exception) { Log.d("API ERROR", e.toString()) }
+                Log.d("API", "Fetching $i")
+            } catch (e: Exception) { Log.d("API ERROR", e.toString()); break }
         }
+
         return pokemonList
 
         //return (1..count).mapTo(ArrayList()) { fetchPokemon(it)}

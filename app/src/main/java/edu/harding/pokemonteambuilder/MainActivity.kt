@@ -1,6 +1,7 @@
 package edu.harding.pokemonteambuilder
 
 import android.app.ListActivity
+import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
 import android.support.v7.app.AppCompatActivity
@@ -58,11 +59,21 @@ class MainActivity : AppCompatActivity() {
         startActivity(intent)
     }
 
-    fun testAPI(view: View) {
+    fun tryBuildDB(view: View) {
         var api = PokemonFetcher()
+        var db = PokemonDatabase(getPreferences(Context.MODE_PRIVATE))
+        var pokemonList: ArrayList<CustomPokemon>
+        var converter = PokemonConverter()
         doAsync {
-            Log.d("API", api.fetchAll().toString())
+            pokemonList = converter.customPokemonListFromAPI(api.fetchAll())
+            db.save(pokemonList)
         }
+    }
+
+    fun tryLoadDB(view: View) {
+        var db = PokemonDatabase(getPreferences(Context.MODE_PRIVATE))
+        var pokemonList = db.load()
+        Log.d("DB", pokemonList.toString())
     }
 
     fun goToList(view: View) {
