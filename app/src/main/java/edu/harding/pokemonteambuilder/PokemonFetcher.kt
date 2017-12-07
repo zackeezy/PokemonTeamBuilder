@@ -38,7 +38,7 @@ class PokemonFetcher {
             segment = mPokeApi.getPokemonList(offset, limit)
             count = segment.count
             Log.d("API", count.toString())
-        } catch (e: Exception) { count = 949}
+        } catch (e: Exception) { count = 807 }
 
         var pokemonList = ArrayList<Pokemon>()
         for (i: Int in 1..count) {

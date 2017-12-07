@@ -14,6 +14,7 @@ import android.view.ViewGroup
 import android.widget.ProgressBar
 import android.widget.TextView
 import edu.harding.pokemonteambuilder.*
+import kotlinx.android.synthetic.main.activity_pokemon_list.*
 import java.util.ArrayList
 import kotlinx.android.synthetic.main.list_item_pokemon.*
 import org.jetbrains.anko.doAsync
@@ -28,13 +29,7 @@ class PokemonListFragment() : Fragment() {
 
     private lateinit var mView: View
 
-    var mContext: Context? = null
-
     var mProgress: ProgressBar? = null
-
-    constructor(context: Context) : this() {
-        mContext = context
-    }
 
     override fun onCreate(savedInstanceState: Bundle?) = super.onCreate(savedInstanceState)
 
@@ -61,8 +56,11 @@ class PokemonListFragment() : Fragment() {
         recyclerView.addItemDecoration(separator)
 
         doAsync {
-            var adapter = PokemonAdapter(api.getPokemon())
-            uiThread { recyclerView.adapter = adapter }
+            var adapter = PokemonAdapter(CustomPokemon.pokemonListToCustomPokemonList(api.fetchAll()))
+            uiThread {
+                recyclerView.adapter = adapter
+                progressBar.visibility = View.GONE
+            }
         }
     }
 

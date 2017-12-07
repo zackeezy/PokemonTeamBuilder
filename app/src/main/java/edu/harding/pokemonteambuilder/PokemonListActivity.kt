@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
 import android.support.v7.widget.Toolbar
+import android.widget.ProgressBar
 import layout.PokemonListFragment
 import java.util.*
 
@@ -22,7 +23,7 @@ class PokemonListActivity : AppCompatActivity() {
         mFragment = fragmentManager.findFragmentById(R.id.pokemon_list_container)
 
         if (mFragment == null) {
-            mFragment = PokemonListFragment(this)
+            mFragment = PokemonListFragment()
             fragmentManager.beginTransaction()
                     .add(R.id.pokemon_list_container, mFragment)
                     .commit()
