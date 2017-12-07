@@ -18,8 +18,14 @@ class PokemonFetcher {
     }
 
 
-    fun fetchPokemon(pokedexIndex: Int) : Pokemon  = mPokeApi.getPokemon(pokedexIndex)
+    fun fetchPokemon(pokedexIndex: Int) : Pokemon {
+        var p: Pokemon
+        try {
+            p = mPokeApi.getPokemon(pokedexIndex)
+        } catch (e: Exception) { throw e }
 
+        return p
+    }
 
     fun fetchAll() : ArrayList<Pokemon>{
         // TODO: Use getPokemonList(offset, limit) and increment instead of individual individual request
@@ -31,14 +37,11 @@ class PokemonFetcher {
         try {
             segment = mPokeApi.getPokemonList(offset, limit)
             count = segment.count
-        } catch (e: Exception) { count = 940}
-
-//        do {
-//
-//        } while (segment.next != null)
+            Log.d("API", count.toString())
+        } catch (e: Exception) { count = 949}
 
         var pokemonList = ArrayList<Pokemon>()
-        for (i: Int in 1..33) {
+        for (i: Int in 1..count) {
             try {
                 Thread.sleep(1000)
                  pokemonList.add(fetchPokemon(i))
