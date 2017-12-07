@@ -107,14 +107,8 @@ class PokemonListFragment() : Fragment() {
             var name = pokemon_name_textview.text.toString()
             var type = pokemon_type_textview.text.split("/")
             var pokemon = CustomPokemon(name, type as ArrayList<String>)
-            onUiThread {
-                var pla = mContext as PokemonListActivity
-                var i = Intent()
-                i.putExtra("Pokemon",pokemon as Serializable)
-                i.putExtra("pokemon",pla.intent.extras["pokemon"] as Int)
-                pla.setResult(0,i)
-                pla.finish()
-            }
+            var i = Intent(mContext,PokemonSetupActivity::class.java)
+            startActivityForResult(i,0)
         }
     }
 
@@ -136,6 +130,17 @@ class PokemonListFragment() : Fragment() {
             val p = mPokemonList.get(index)
             holder.bind(p)
         }
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        var pla = mContext as PokemonListActivity
+        var pokemon = pla.intent.extras["Pokemon"] as CustomPokemon
+        var i = Intent()
+        i.putExtra("Pokemon",pokemon as Serializable)
+        i.putExtra("pokemon",pla.intent.extras["pokemon"] as Int)
+        pla.setResult(0,i)
+        pla.finish()
+        super.onActivityResult(requestCode, resultCode, data)
     }
 
 }

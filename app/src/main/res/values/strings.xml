@@ -35,4 +35,10 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="move_1_tag">Move 1</string>
+    <string name="move_2_tag">Move 2</string>
+    <string name="move_3">Move 3</string>
+    <string name="move_4">Move 4</string>
+    <string name="move_3_tag">Move 3</string>
+    <string name="move_4_tag">Move 4</string>
 </resources>
