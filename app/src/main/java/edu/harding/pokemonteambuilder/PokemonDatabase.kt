@@ -14,11 +14,13 @@ class PokemonDatabase(prefs: SharedPreferences) {
     private var mGson: Gson
     private var mEditor: SharedPreferences.Editor
 
+
     init {
         mPrefs = prefs
         mGson = Gson()
         mEditor = prefs.edit()
     }
+
 
     fun save(dbList: ArrayList<CustomPokemon>) {
         var json = mGson.toJson(dbList)

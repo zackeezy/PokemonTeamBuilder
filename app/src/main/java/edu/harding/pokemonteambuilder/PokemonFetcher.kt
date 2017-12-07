@@ -4,20 +4,21 @@ import android.util.Log
 import me.sargunvohra.lib.pokekotlin.client.PokeApi
 import me.sargunvohra.lib.pokekotlin.client.PokeApiClient
 import me.sargunvohra.lib.pokekotlin.model.*
+import java.security.KeyStore
 import java.util.*
 
 class PokemonFetcher {
 
 
-    private var mPokeApi: PokeApi = PokeApiClient()
+    private var mPokeApi: PokeApi
 
-
-    fun fetchPokemon(pokedexIndex: Int): Pokemon = mPokeApi.getPokemon(pokedexIndex)
-
-
-    private fun fetchPokemonListByURL(url: String) {
-
+    
+    init {
+        mPokeApi = PokeApiClient()
     }
+
+
+    fun fetchPokemon(pokedexIndex: Int) : Pokemon  = mPokeApi.getPokemon(pokedexIndex)
 
 
     fun fetchAll() : ArrayList<Pokemon>{
