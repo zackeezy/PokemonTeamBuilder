@@ -1,19 +1,29 @@
 package edu.harding.pokemonteambuilder
 
 import android.content.Intent
+import android.graphics.Bitmap
+import android.graphics.drawable.BitmapDrawable
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 
 class TrainerCardDoneActivity : AppCompatActivity() {
 
-    var mTeam: PokemonTeam 
+    var mTeam: PokemonTeam? = null
+
+    var mUserImage: Bitmap? = null
+
+    var mTemplate: Bitmap? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_trainer_card_done)
 
+        mTeam = intent.extras["Team"] as PokemonTeam
 
+        mUserImage = (intent.extras["userImage"] as TrainerCardActivity.BitmapSerializable).bitmap
+
+        mTemplate = (resources.getDrawable(intent.extras["Card"] as Int, null) as BitmapDrawable).bitmap
     }
 
     fun backToMainActivity(view: View){
