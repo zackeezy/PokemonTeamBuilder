@@ -9,9 +9,20 @@ import android.view.View
 import android.widget.ArrayAdapter
 import kotlinx.android.synthetic.main.activity_trainer_card.*
 import java.util.*
+import android.provider.MediaStore
+import android.content.Intent
+import android.R.attr.data
+import android.app.Activity
+import android.support.v4.app.NotificationCompat.getExtras
+
+
+
+
 
 class TrainerCardActivity : AppCompatActivity() {
     var mTemplates = ArrayList<Bitmap>()
+
+    val REQUEST_IMAGE_CAPTURE: Int = 1
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -62,10 +73,23 @@ class TrainerCardActivity : AppCompatActivity() {
     }
 
     fun launchCamera(view: View){
-
+        val takePictureIntent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
+        if (takePictureIntent.resolveActivity(packageManager) != null) {
+            startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE)
+        }
     }
 
     fun generateTrainerCard(view: View){
 
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        if (requestCode === REQUEST_IMAGE_CAPTURE && resultCode === Activity.RESULT_OK) {
+            val extras = data!!.getExtras()
+            val imageBitmap = extras.get("data") as Bitmap
+            userPhotoImageView.setImageBitmap(imageBitmap)
+        }
+
+        super.onActivityResult(requestCode, resultCode, data)
     }
 }
