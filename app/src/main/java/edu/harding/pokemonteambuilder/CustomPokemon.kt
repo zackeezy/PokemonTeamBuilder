@@ -31,6 +31,14 @@ class CustomPokemon() : Serializable {
 
             return c
         }
+
+        fun pokemonListToCustomPokemonList(pokemon: ArrayList<Pokemon>):ArrayList<CustomPokemon>{
+            var output: ArrayList<CustomPokemon> = ArrayList()
+            for(p: Pokemon in pokemon){
+                output.add(pokemonToCustomPokemon(p))
+            }
+            return output
+        }
     }
 
     constructor(name: String, types: ArrayList<String>) : this(){

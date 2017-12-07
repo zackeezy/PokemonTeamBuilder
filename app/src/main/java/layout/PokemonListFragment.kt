@@ -17,6 +17,7 @@ import android.view.ViewGroup
 import android.widget.ProgressBar
 import android.widget.TextView
 import edu.harding.pokemonteambuilder.*
+import kotlinx.android.synthetic.main.activity_pokemon_list.*
 import java.util.ArrayList
 import kotlinx.android.synthetic.main.list_item_pokemon.*
 import org.jetbrains.anko.*
@@ -44,9 +45,6 @@ class PokemonListFragment() : Fragment() {
         // Inflate the layout for this fragment
         mView = inflater.inflate(R.layout.fragment_pokemon_list, container, false)
 
-        mProgress = ProgressBar(mContext)
-        mProgress
-
         fillRecycler()
         return mView
     }
@@ -62,6 +60,7 @@ class PokemonListFragment() : Fragment() {
         var separator = DividerItemDecoration(recyclerView.context, 1)
         recyclerView.addItemDecoration(separator)
 
+<<<<<<< HEAD
         try {
             var adapter = PokemonAdapter(db.load())
             recyclerView.adapter = adapter
@@ -71,6 +70,14 @@ class PokemonListFragment() : Fragment() {
                 title = "DB Error"
                 okButton { }
             }.show()
+=======
+        doAsync {
+            var adapter = PokemonAdapter(CustomPokemon.pokemonListToCustomPokemonList(api.fetchAll()))
+            uiThread {
+                recyclerView.adapter = adapter
+                progressBar.visibility = View.GONE
+            }
+>>>>>>> 9e8eecb15740fba2cd2a8f3b5702631fd739e247
         }
     }
 
@@ -112,8 +119,10 @@ class PokemonListFragment() : Fragment() {
             var name = pokemon_name_textview.text.toString()
             var type = pokemon_type_textview.text.split("/")
             var pokemon = CustomPokemon(name, type as ArrayList<String>)
-            var i = Intent(mContext,PokemonSetupActivity::class.java)
-            var pla = mContext as PokemonListActivity
+            var i = Intent()
+            i.putExtra("Pokemon", pokemon as Serializable)
+            i.putExtra("pokemon", (activity as PokemonListActivity).intent.extras["pokemon"] as Int)
+            var pla = activity as PokemonListActivity
             pla.setResult(0,i)
             pla.finish()
         }
@@ -140,7 +149,7 @@ class PokemonListFragment() : Fragment() {
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        var pla = mContext as PokemonListActivity
+        var pla = activity as PokemonListActivity
         var pokemon = pla.intent.extras["Pokemon"] as CustomPokemon
         var i = Intent()
         i.putExtra("Pokemon",pokemon as Serializable)
