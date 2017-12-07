@@ -85,7 +85,8 @@ class MainActivity : AppCompatActivity() {
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         if(resultCode == 0){
             var pokemon: CustomPokemon = data!!.extras["Pokemon"] as CustomPokemon
-
+            var num: Int = data!!.extras["pokemon"] as Int
+            
         }
 
         super.onActivityResult(requestCode, resultCode, data)
