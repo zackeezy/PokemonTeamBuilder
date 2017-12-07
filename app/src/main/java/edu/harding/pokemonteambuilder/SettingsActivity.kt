@@ -22,6 +22,7 @@ class SettingsActivity : AppCompatActivity() {
         var ab: Toolbar = findViewById(R.id.toolbar)
         ab.title = "Settings"
         setSupportActionBar(ab)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
     }
 
     fun updateDatabase_onClick(view: View) {
@@ -32,7 +33,7 @@ class SettingsActivity : AppCompatActivity() {
         }.show()
     }
 
-    fun updateDatabase() {
+    private fun updateDatabase() {
         val converter = PokemonConverter()
         val db = PokemonDatabase(getPreferences(Context.MODE_PRIVATE))
         val fetcher = PokemonFetcher()
@@ -43,7 +44,11 @@ class SettingsActivity : AppCompatActivity() {
                 uiThread {
                     toast("Database update complete")
                 }
-            } catch (e: Exception) { toast("Database update failed") }
+            } catch (e: Exception) {
+                uiThread {
+                    toast("Database update failed")
+                }
+            }
         }
     }
 }

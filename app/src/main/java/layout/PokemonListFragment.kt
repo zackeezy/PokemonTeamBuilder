@@ -1,13 +1,16 @@
 package layout
 
 import android.content.Context
+import android.content.Context.MODE_PRIVATE
 import android.content.Intent
+import android.content.SharedPreferences
 import android.graphics.Color
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v7.widget.DividerItemDecoration
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -16,11 +19,10 @@ import android.widget.TextView
 import edu.harding.pokemonteambuilder.*
 import java.util.ArrayList
 import kotlinx.android.synthetic.main.list_item_pokemon.*
-import org.jetbrains.anko.doAsync
+import org.jetbrains.anko.*
+import org.jetbrains.anko.support.v4.alert
 import org.jetbrains.anko.support.v4.onUiThread
 import org.jetbrains.anko.support.v4.toast
-import org.jetbrains.anko.textColor
-import org.jetbrains.anko.uiThread
 import java.io.Serializable
 
 
@@ -29,9 +31,7 @@ class PokemonListFragment() : Fragment() {
     private lateinit var mView: View
 
     var mContext: Context? = null
-
     var mProgress: ProgressBar? = null
-
     constructor(context: Context) : this() {
         mContext = context
     }
@@ -53,8 +53,7 @@ class PokemonListFragment() : Fragment() {
 
 
     private fun fillRecycler() {
-        val api = PokemonFetcher()
-        val converter = PokemonConverter()
+        var db = PokemonDatabase(this.activity.getPreferences(MODE_PRIVATE))
 
         var recyclerView: RecyclerView = mView.findViewById(R.id.pokemon_list_recycler)
         recyclerView.layoutManager = LinearLayoutManager(activity)
@@ -63,9 +62,15 @@ class PokemonListFragment() : Fragment() {
         var separator = DividerItemDecoration(recyclerView.context, 1)
         recyclerView.addItemDecoration(separator)
 
-        doAsync {
-            var adapter = PokemonAdapter(api.getPokemon())
-            uiThread { recyclerView.adapter = adapter }
+        try {
+            var adapter = PokemonAdapter(db.load())
+            recyclerView.adapter = adapter
+        } catch (e: Exception) {
+            Log.d("RECYCLER", e.toString())
+            alert("Please update your database") {
+                title = "DB Error"
+                okButton { }
+            }.show()
         }
     }
 

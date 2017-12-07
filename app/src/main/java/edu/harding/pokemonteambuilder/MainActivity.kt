@@ -83,17 +83,6 @@ class MainActivity : AppCompatActivity() {
         startActivity(intent)
     }
 
-    fun tryBuildDB(view: View) {
-        var api = PokemonFetcher()
-        var db = PokemonDatabase(getPreferences(Context.MODE_PRIVATE))
-        var pokemonList: ArrayList<CustomPokemon>
-        var converter = PokemonConverter()
-        doAsync {
-            pokemonList = converter.customPokemonListFromAPI(api.fetchAll())
-            db.save(pokemonList)
-        }
-    }
-
     fun tryLoadDB(view: View) {
         var db = PokemonDatabase(getPreferences(Context.MODE_PRIVATE))
         var pokemonList = db.load()
