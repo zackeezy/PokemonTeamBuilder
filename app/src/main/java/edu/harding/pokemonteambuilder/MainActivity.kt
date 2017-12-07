@@ -7,6 +7,8 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.support.v7.widget.Toolbar
+import android.view.Menu
+import android.view.MenuItem
 import org.jetbrains.anko.doAsync
 import java.util.*
 
@@ -51,6 +53,21 @@ class MainActivity : AppCompatActivity() {
         ab.title = "Pokemon Team Builder"
     }
 
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.actionbar_menu, menu)
+        return super.onCreateOptionsMenu(menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem?): Boolean = when (item?.itemId) {
+        R.id.about_item -> {
+            goToAboutActivity()
+            true
+        }
+        else -> {
+            super.onOptionsItemSelected(item)
+        }
+    }
+
 
     fun buildTrainerCard(view: View) {
         var intent = Intent(this, TrainerCardActivity::class.java)
@@ -77,6 +94,11 @@ class MainActivity : AppCompatActivity() {
 
     fun goToList(view: View) {
         val intent = Intent(this, PokemonListActivity::class.java)
+        startActivity(intent)
+    }
+
+    fun goToAboutActivity() {
+        var intent = Intent(this, AboutActivity::class.java)
         startActivity(intent)
     }
 

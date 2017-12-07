@@ -18,16 +18,15 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".PokemonListActivity"
-            android:parentActivityName=".MainActivity"/>
-        <activity
-            android:name=".PokemonSetupActivity" />
+            android:parentActivityName=".MainActivity" />
+        <activity android:name=".PokemonSetupActivity" />
         <activity
             android:name=".TrainerCardActivity"
             android:parentActivityName=".MainActivity" />
-        <activity android:name=".MoveSetupActivity"></activity>
+        <activity android:name=".MoveSetupActivity" />
+        <activity android:name=".AboutActivity"></activity>
     </application>
 
 </manifest>
