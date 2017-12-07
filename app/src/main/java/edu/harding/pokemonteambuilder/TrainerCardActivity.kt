@@ -57,6 +57,8 @@ class TrainerCardActivity : AppCompatActivity() {
     private fun setupActionBar() {
         var ab: Toolbar = findViewById(R.id.toolbar)
         ab.title = "Pokemon Team Builder"
+        setSupportActionBar(ab)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
     }
 
     fun launchCamera(view: View){

@@ -32,5 +32,7 @@ class PokemonListActivity : AppCompatActivity() {
     private fun setupActionBar() {
         var ab: Toolbar = findViewById(R.id.toolbar)
         ab.title = "Pokemon"
+        setSupportActionBar(ab)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
     }
 }
