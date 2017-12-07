@@ -108,7 +108,9 @@ class PokemonListFragment() : Fragment() {
             var type = pokemon_type_textview.text.split("/")
             var pokemon = CustomPokemon(name, type as ArrayList<String>)
             var i = Intent(mContext,PokemonSetupActivity::class.java)
-            startActivityForResult(i,0)
+            var pla = mContext as PokemonListActivity
+            pla.setResult(0,i)
+            pla.finish()
         }
     }
 

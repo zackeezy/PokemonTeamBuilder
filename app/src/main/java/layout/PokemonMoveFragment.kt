@@ -97,11 +97,7 @@ class PokemonMoveFragment() : Fragment() {
 
 
         override fun onClick(view: View?) {
-            var name = pokemon_name_textview.text.toString()
-            var type = pokemon_type_textview.text.split("/")
-            var pokemon = CustomPokemon(name, type as ArrayList<String>)
-            var i = Intent(mContext, PokemonSetupActivity::class.java)
-            startActivityForResult(i,0)
+
         }
     }
 
