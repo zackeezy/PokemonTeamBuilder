@@ -1,7 +1,6 @@
 package layout
 
 import android.content.Context
-import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
 import android.support.v4.app.Fragment
@@ -13,15 +12,15 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ProgressBar
 import android.widget.TextView
-import edu.harding.pokemonteambuilder.*
 import java.util.ArrayList
-import kotlinx.android.synthetic.main.list_item_pokemon.*
+import edu.harding.pokemonteambuilder.CustomPokemon
+import edu.harding.pokemonteambuilder.PokemonConverter
+import edu.harding.pokemonteambuilder.PokemonFetcher
+import edu.harding.pokemonteambuilder.R
 import org.jetbrains.anko.doAsync
-import org.jetbrains.anko.support.v4.onUiThread
 import org.jetbrains.anko.support.v4.toast
 import org.jetbrains.anko.textColor
 import org.jetbrains.anko.uiThread
-import java.io.Serializable
 
 
 class PokemonListFragment() : Fragment() {
@@ -104,17 +103,7 @@ class PokemonListFragment() : Fragment() {
 
 
         override fun onClick(view: View?) {
-            var name = pokemon_name_textview.text.toString()
-            var type = pokemon_type_textview.text.split("/")
-            var pokemon = CustomPokemon(name, type as ArrayList<String>)
-            onUiThread {
-                var pla = mContext as PokemonListActivity
-                var i = Intent()
-                i.putExtra("Pokemon",pokemon as Serializable)
-                i.putExtra("pokemon",pla.intent.extras["pokemon"] as Int)
-                pla.setResult(0,i)
-                pla.finish()
-            }
+            toast("Pokemon list item touched")
         }
     }
 

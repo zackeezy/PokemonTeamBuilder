@@ -1,6 +1,5 @@
 package edu.harding.pokemonteambuilder
 
-import android.app.Activity
 import android.app.ListActivity
 import android.content.Context
 import android.content.Intent
@@ -26,28 +25,32 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun pokemonChoose(view: View) {
-        var intent = Intent(this, PokemonListActivity::class.java)
         when(view.tag){
             R.string.pokemon_1 -> {
-                intent.putExtra("pokemon", 1)
+                mTeam.mPokemon1 = CustomPokemon()
+
             }
             R.string.pokemon_2 -> {
-                intent.putExtra("pokemon", 2)
+                mTeam.mPokemon2 = CustomPokemon()
+
             }
             R.string.pokemon_3 -> {
-                intent.putExtra("pokemon", 3)
+                mTeam.mPokemon3 = CustomPokemon()
+
             }
             R.string.pokemon_4 -> {
-                intent.putExtra("pokemon", 4)
+                mTeam.mPokemon4 = CustomPokemon()
+
             }
             R.string.pokemon_5 -> {
-                intent.putExtra("pokemon", 5)
+                mTeam.mPokemon5 = CustomPokemon()
+
             }
             R.string.pokemon_6 -> {
-                intent.putExtra("pokemon", 6)
+                mTeam.mPokemon6 = CustomPokemon()
+
             }
         }
-        startActivityForResult(intent,0)
     }
 
     fun buildTrainerCard(view: View) {
@@ -56,7 +59,6 @@ class MainActivity : AppCompatActivity() {
         startActivity(intent)
     }
 
-<<<<<<< HEAD
     fun tryBuildDB(view: View) {
         var api = PokemonFetcher()
         var db = PokemonDatabase(getPreferences(Context.MODE_PRIVATE))
@@ -66,10 +68,6 @@ class MainActivity : AppCompatActivity() {
             pokemonList = converter.customPokemonListFromAPI(api.fetchAll())
             db.save(pokemonList)
         }
-=======
-    fun testAPI(view: View) {
-
->>>>>>> 6acf05710806c9a542551ad360783bfddc7d1511
     }
 
     fun tryLoadDB(view: View) {
@@ -81,14 +79,5 @@ class MainActivity : AppCompatActivity() {
     fun goToList(view: View) {
         val intent = Intent(this, PokemonListActivity::class.java)
         startActivity(intent)
-    }
-
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        if(resultCode == 0){
-            var pokemon: CustomPokemon = data!!.extras["Pokemon"] as CustomPokemon
-
-        }
-
-        super.onActivityResult(requestCode, resultCode, data)
     }
 }

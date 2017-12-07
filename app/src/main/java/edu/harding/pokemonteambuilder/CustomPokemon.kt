@@ -3,16 +3,15 @@ package edu.harding.pokemonteambuilder
 import android.graphics.Bitmap
 import android.util.Pair
 import me.sargunvohra.lib.pokekotlin.model.Pokemon
-import java.io.Serializable
 import java.util.*
 
-class CustomPokemon() : Serializable {
+class CustomPokemon() {
 
-    var name: String? = null
-    var types: ArrayList<String> = ArrayList()
+    var name: String
+    var types: ArrayList<String>
     var thumbnail: Bitmap? = null
-    internal var mLearnedMoves: ArrayList<Move> = ArrayList()
-    internal var mAbilities: ArrayList<Pair<String, String>> = ArrayList()
+    internal var mLearnedMoves: ArrayList<Move>
+    internal var mAbilities: ArrayList<Pair<String, String>>
 
     // Kotlin equivalent to static function
     companion object {
@@ -33,13 +32,10 @@ class CustomPokemon() : Serializable {
         }
     }
 
-    constructor(name: String, types: ArrayList<String>) : this(){
-        this.name = name
-        this.types = types
-    }
-
-    constructor(name: String, types: ArrayList<String>, moves: ArrayList<Move>, abilities: ArrayList<Pair<String, String>>) : this(name, types) {
-        this.mLearnedMoves = moves
-        this.mAbilities = abilities
+    init {
+        this.name = ""
+        this.types = ArrayList()
+        this.mLearnedMoves = ArrayList()
+        this.mAbilities = ArrayList()
     }
 }
