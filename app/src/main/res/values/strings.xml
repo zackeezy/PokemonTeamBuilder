@@ -42,7 +42,8 @@
     <string name="move_3_tag">Move 3</string>
     <string name="move_4_tag">Move 4</string>
     <string name="about">About</string>
-    <string name="about_info"><![CDATA[Pokemon Team Builder - Bryan Cuneo & Zack McKee]]></string>
+    <string name="about_info">
+        <![CDATA[Pokemon Team Builder\nWritten in Kotlin by Bryan Cuneo & Zack McKee\nCOMP 475 - Fall 2017\n\nUtilize Pokéapi to build trainer cards]]></string>
     <string name="power">Power:</string>
     <string name="accuracy">Accuracy:</string>
     <string name="settings">Settings</string>
