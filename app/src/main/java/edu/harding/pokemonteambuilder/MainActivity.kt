@@ -1,20 +1,13 @@
 package edu.harding.pokemonteambuilder
 
-import android.app.Activity
-import android.app.ListActivity
 import android.content.Context
 import android.content.Intent
-import android.content.SharedPreferences
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
-import android.os.Debug
 import android.util.Log
 import android.view.View
-import me.sargunvohra.lib.pokekotlin.client.PokeApi
-import me.sargunvohra.lib.pokekotlin.client.PokeApiClient
-import me.sargunvohra.lib.pokekotlin.model.Pokemon
+import android.support.v7.widget.Toolbar
 import org.jetbrains.anko.doAsync
-import java.io.Console
 import java.util.*
 
 class MainActivity : AppCompatActivity() {
@@ -23,6 +16,8 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        setupActionBar()
     }
 
     fun pokemonChoose(view: View) {
@@ -49,6 +44,13 @@ class MainActivity : AppCompatActivity() {
         }
         startActivityForResult(intent,0)
     }
+
+
+    private fun setupActionBar() {
+        var ab: Toolbar = findViewById(R.id.toolbar)
+        ab.title = "Pokemon Team Builder"
+    }
+
 
     fun buildTrainerCard(view: View) {
         var intent = Intent(this, TrainerCardActivity::class.java)
