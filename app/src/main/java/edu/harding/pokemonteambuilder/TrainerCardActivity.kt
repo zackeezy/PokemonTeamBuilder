@@ -13,14 +13,22 @@ import android.provider.MediaStore
 import android.content.Intent
 import android.R.attr.data
 import android.app.Activity
+import android.graphics.drawable.BitmapDrawable
 import android.support.v4.app.NotificationCompat.getExtras
-
-
-
+import me.sargunvohra.lib.pokekotlin.model.Pokemon
+import java.io.Serializable
 
 
 class TrainerCardActivity : AppCompatActivity() {
+    inner class BitmapSerializable : Serializable {
+        var bitmap: Bitmap? = null
+    }
+
+    var mSBitmap: BitmapSerializable? = null
+
     var mTemplates = ArrayList<Bitmap>()
+
+    var mTeam: PokemonTeam = PokemonTeam()
 
     val REQUEST_IMAGE_CAPTURE: Int = 1
 
@@ -30,18 +38,15 @@ class TrainerCardActivity : AppCompatActivity() {
 
         setupActionBar()
 
-        var groudon = BitmapFactory.decodeResource(resources, R.drawable.groudon)
-        var kyogre = BitmapFactory.decodeResource(resources, R.drawable.kyogre)
-        var xerneas = BitmapFactory.decodeResource(resources, R.drawable.xerneas)
-        var yveltal = BitmapFactory.decodeResource(resources, R.drawable.yveltal)
-        var chesnaught = BitmapFactory.decodeResource(resources, R.drawable.chesnaught)
-        var delphox = BitmapFactory.decodeResource(resources, R.drawable.delphox)
-        var greninja = BitmapFactory.decodeResource(resources, R.drawable.greninja)
-        var lunala = BitmapFactory.decodeResource(resources, R.drawable.moon)
-        var solgaleo = BitmapFactory.decodeResource(resources, R.drawable.sun)
-        var instinct = BitmapFactory.decodeResource(resources, R.drawable.instinct)
-        var mystic = BitmapFactory.decodeResource(resources, R.drawable.mystic)
-        var valor = BitmapFactory.decodeResource(resources, R.drawable.valor)
+        var groudon = BitmapFactory.decodeResource(resources, R.drawable.card_groudon)
+        var kyogre = BitmapFactory.decodeResource(resources, R.drawable.card_kyogre)
+        var xerneas = BitmapFactory.decodeResource(resources, R.drawable.card_xerneas)
+        var yveltal = BitmapFactory.decodeResource(resources, R.drawable.card_yveltal)
+        var chesnaught = BitmapFactory.decodeResource(resources, R.drawable.card_chesnaught)
+        var delphox = BitmapFactory.decodeResource(resources, R.drawable.card_delphox)
+        var greninja = BitmapFactory.decodeResource(resources, R.drawable.card_greninja)
+        var lunala = BitmapFactory.decodeResource(resources, R.drawable.card_moon)
+        var solgaleo = BitmapFactory.decodeResource(resources, R.drawable.card_sun)
 
         mTemplates.add(groudon)
         mTemplates.add(kyogre)
@@ -52,9 +57,6 @@ class TrainerCardActivity : AppCompatActivity() {
         mTemplates.add(greninja)
         mTemplates.add(lunala)
         mTemplates.add(solgaleo)
-        mTemplates.add(instinct)
-        mTemplates.add(mystic)
-        mTemplates.add(valor)
 
         var adapter = ArrayAdapter.createFromResource(this, R.array.trainer_card_types, android.R.layout.simple_spinner_item)
 
@@ -62,7 +64,7 @@ class TrainerCardActivity : AppCompatActivity() {
 
         trainerCardTypeSpinner.adapter = adapter
 
-
+        mTeam = intent.extras["Team"] as PokemonTeam
     }
 
     private fun setupActionBar() {
@@ -80,7 +82,24 @@ class TrainerCardActivity : AppCompatActivity() {
     }
 
     fun generateTrainerCard(view: View){
-
+        var i: Intent = Intent(this, TrainerCardDoneActivity::class.java)
+        var options = resources.getStringArray(R.array.trainer_card_types)
+        when(trainerCardTypeSpinner.selectedItem.toString()){
+            options[0] ->{i.putExtra("Card", R.drawable.card_groudon)}
+            options[1] ->{i.putExtra("Card", R.drawable.card_kyogre)}
+            options[2] ->{i.putExtra("Card", R.drawable.card_xerneas)}
+            options[3] ->{i.putExtra("Card", R.drawable.card_yveltal)}
+            options[4] ->{i.putExtra("Card", R.drawable.card_chesnaught)}
+            options[5] ->{i.putExtra("Card", R.drawable.card_delphox)}
+            options[6] ->{i.putExtra("Card", R.drawable.card_greninja)}
+            options[7] ->{i.putExtra("Card", R.drawable.card_moon)}
+            options[8] ->{i.putExtra("Card", R.drawable.card_sun)}
+        }
+        i.putExtra("Team", mTeam)
+        var sb: BitmapSerializable = BitmapSerializable()
+        sb.bitmap = (userPhotoImageView.drawable as BitmapDrawable).bitmap
+        i.putExtra("userImage",sb)
+        startActivity(i)
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {

@@ -1,10 +1,8 @@
 package edu.harding.pokemonteambuilder
 
-/**
- * Created by zmckee on 12/5/2017.
- */
+import java.io.Serializable
 
-class PokemonTeam{
+class PokemonTeam : Serializable{
     var mPokemon1: CustomPokemon? = null
     var mPokemon2: CustomPokemon? = null
     var mPokemon3: CustomPokemon? = null

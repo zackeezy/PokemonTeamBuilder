@@ -80,6 +80,8 @@ class MainActivity : AppCompatActivity() {
     fun buildTrainerCard(view: View) {
         var intent = Intent(this, TrainerCardActivity::class.java)
 
+        intent.putExtra("Team", mTeam)
+
         startActivity(intent)
     }
 

@@ -6,4 +6,15 @@
     android:layout_height="match_parent"
     tools:context="edu.harding.pokemonteambuilder.TrainerCardDoneActivity">
 
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/trainerCard"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/start_over"
+        android:onClick="backToMainActivity"/>
+
 </android.support.constraint.ConstraintLayout>
