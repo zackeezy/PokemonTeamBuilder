@@ -4,6 +4,7 @@ import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.support.v7.widget.Toolbar
 import android.view.View
 import android.widget.ArrayAdapter
 import kotlinx.android.synthetic.main.activity_trainer_card.*
@@ -15,6 +16,8 @@ class TrainerCardActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_trainer_card)
+
+        setupActionBar()
 
         var groudon = BitmapFactory.decodeResource(resources, R.drawable.groudon)
         var kyogre = BitmapFactory.decodeResource(resources, R.drawable.kyogre)
@@ -49,6 +52,11 @@ class TrainerCardActivity : AppCompatActivity() {
         trainerCardTypeSpinner.adapter = adapter
 
 
+    }
+
+    private fun setupActionBar() {
+        var ab: Toolbar = findViewById(R.id.toolbar)
+        ab.title = "Pokemon Team Builder"
     }
 
     fun launchCamera(view: View){
