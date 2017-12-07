@@ -65,13 +65,6 @@ class MainActivity : AppCompatActivity() {
             pokemonList = converter.customPokemonListFromAPI(api.fetchAll())
             db.save(pokemonList)
         }
-<<<<<<< HEAD
-=======
-    }
-
-    fun testAPI(view: View) {
-
->>>>>>> 4608ff41c9a900945adea89c0663161a0d82d63a
     }
 
     fun tryLoadDB(view: View) {

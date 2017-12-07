@@ -12,7 +12,7 @@ class PokemonFetcher {
 
     private var mPokeApi: PokeApi
 
-    
+
     init {
         mPokeApi = PokeApiClient()
     }
