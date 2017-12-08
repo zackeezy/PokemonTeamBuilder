@@ -22,7 +22,7 @@ class SettingsActivity : AppCompatActivity() {
         var ab: Toolbar = findViewById(R.id.toolbar)
         ab.title = "Settings"
         setSupportActionBar(ab)
-        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        supportActionBar!!.setDisplayHomeAsUpEnabled(true)
     }
 
     fun updateDatabase_onClick(view: View) {

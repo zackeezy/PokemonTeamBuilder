@@ -17,6 +17,6 @@ class AboutActivity : AppCompatActivity() {
         var ab: Toolbar = findViewById(R.id.toolbar)
         ab.title = "About"
         setSupportActionBar(ab)
-        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        supportActionBar!!.setDisplayHomeAsUpEnabled(true)
     }
 }

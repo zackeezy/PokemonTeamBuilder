@@ -8,6 +8,7 @@ import android.graphics.Paint
 import android.graphics.drawable.BitmapDrawable
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.support.v7.widget.Toolbar
 import android.view.View
 import kotlinx.android.synthetic.main.activity_trainer_card_done.*
 import java.util.*
@@ -25,6 +26,8 @@ class TrainerCardDoneActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_trainer_card_done)
+
+        setupActionBar()
 
         mTeam = intent.extras["Team"] as PokemonTeam
 
@@ -898,5 +901,11 @@ class TrainerCardDoneActivity : AppCompatActivity() {
         var i: Intent = Intent(applicationContext, MainActivity::class.java)
         i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
         startActivity(i)
+    }
+
+    private fun setupActionBar() {
+        var ab: Toolbar = findViewById(R.id.toolbar)
+        ab.title = "Finished Trainer Card"
+        setSupportActionBar(ab)
     }
 }
