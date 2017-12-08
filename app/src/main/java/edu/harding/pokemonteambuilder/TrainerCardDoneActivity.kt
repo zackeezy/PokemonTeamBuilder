@@ -842,7 +842,10 @@ class TrainerCardDoneActivity : AppCompatActivity() {
         mPokemon.add(R.drawable.blacephalon)
         mPokemon.add(R.drawable.zeraora)
 
-        var canvas: Canvas = Canvas(mTemplate)
+        var immutableBmp = mTemplate
+        var mutableBmp = immutableBmp?.copy(Bitmap.Config.ARGB_8888, true)
+
+        var canvas: Canvas = Canvas(mutableBmp)
 
         var pokemon1Bitmap: Bitmap? = null
         var pokemon2Bitmap: Bitmap? = null
@@ -852,41 +855,41 @@ class TrainerCardDoneActivity : AppCompatActivity() {
         var pokemon6Bitmap: Bitmap? = null
         var array = resources.getStringArray(R.array.pokedex)
         for(i:String in array){
-            if(mTeam!!.mPokemon1 == i){
+            if(mTeam!!.mPokemon1.equals(i)){
                 var index = array.indexOf(i)
                 pokemon1Bitmap = (resources.getDrawable(mPokemon[index],null) as BitmapDrawable).bitmap
             }
-            else if(mTeam!!.mPokemon2 == i){
+            else if(mTeam!!.mPokemon2.equals(i)){
                 var index = array.indexOf(i)
                 pokemon2Bitmap = (resources.getDrawable(mPokemon[index],null) as BitmapDrawable).bitmap
             }
-            else if(mTeam!!.mPokemon3 == i){
+            else if(mTeam!!.mPokemon3.equals(i)){
                 var index = array.indexOf(i)
                 pokemon3Bitmap = (resources.getDrawable(mPokemon[index],null) as BitmapDrawable).bitmap
             }
-            else if(mTeam!!.mPokemon4 == i){
+            else if(mTeam!!.mPokemon4.equals(i)){
                 var index = array.indexOf(i)
                 pokemon4Bitmap = (resources.getDrawable(mPokemon[index],null) as BitmapDrawable).bitmap
             }
-            else if(mTeam!!.mPokemon5 == i){
+            else if(mTeam!!.mPokemon5.equals(i)){
                 var index = array.indexOf(i)
                 pokemon5Bitmap = (resources.getDrawable(mPokemon[index],null) as BitmapDrawable).bitmap
             }
-            else if(mTeam!!.mPokemon6 == i){
+            else if(mTeam!!.mPokemon6.equals(i)){
                 var index = array.indexOf(i)
                 pokemon6Bitmap = (resources.getDrawable(mPokemon[index],null) as BitmapDrawable).bitmap
             }
         }
         var scaledUserImage: Bitmap = Bitmap.createScaledBitmap(mUserImage, 60, 60, true)
-        canvas.drawBitmap(pokemon1Bitmap,41 as Float,87 as Float, Paint())
-        canvas.drawBitmap(pokemon2Bitmap,41 as Float,139 as Float, Paint())
-        canvas.drawBitmap(pokemon3Bitmap,41 as Float,191 as Float, Paint())
-        canvas.drawBitmap(pokemon4Bitmap,73 as Float,87 as Float, Paint())
-        canvas.drawBitmap(pokemon5Bitmap,73 as Float,139 as Float, Paint())
-        canvas.drawBitmap(pokemon6Bitmap,73 as Float,191 as Float, Paint())
-        canvas.drawBitmap(scaledUserImage,13 as Float,47 as Float, Paint())
+        canvas.drawBitmap(pokemon1Bitmap,41.0f,87.0f, Paint())
+        canvas.drawBitmap(pokemon2Bitmap,41.0f,139.0f, Paint())
+        canvas.drawBitmap(pokemon3Bitmap,41.0f,191.0f, Paint())
+        canvas.drawBitmap(pokemon4Bitmap,73.0f,87.0f, Paint())
+        canvas.drawBitmap(pokemon5Bitmap,73.0f,139.0f, Paint())
+        canvas.drawBitmap(pokemon6Bitmap,73.0f,191.0f, Paint())
+        canvas.drawBitmap(scaledUserImage,13.0f,47.0f, Paint())
 
-        trainerCard.setImageDrawable(BitmapDrawable(resources,mTemplate))
+        trainerCard.setImageDrawable(BitmapDrawable(resources,mutableBmp))
     }
 
     fun backToMainActivity(view: View){
