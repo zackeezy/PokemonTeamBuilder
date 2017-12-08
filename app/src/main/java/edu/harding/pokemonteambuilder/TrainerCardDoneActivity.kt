@@ -880,7 +880,7 @@ class TrainerCardDoneActivity : AppCompatActivity() {
                 pokemon6Bitmap = (resources.getDrawable(mPokemon[index],null) as BitmapDrawable).bitmap
             }
         }
-        var scaledUserImage: Bitmap = Bitmap.createScaledBitmap(mUserImage, 180, 180, true)
+        var scaledUserImage: Bitmap = Bitmap.createScaledBitmap(mUserImage, 160, 160, true)
         canvas.drawBitmap(pokemon1Bitmap,230.0f,110.0f, Paint())
         canvas.drawBitmap(pokemon2Bitmap,385.0f,110.0f, Paint())
         canvas.drawBitmap(pokemon3Bitmap,525.0f,110.0f, Paint())

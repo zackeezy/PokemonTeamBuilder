@@ -12,6 +12,7 @@ import android.view.MenuInflater
 import android.view.MenuItem
 import kotlinx.android.synthetic.main.activity_main.*
 import org.jetbrains.anko.doAsync
+import org.jetbrains.anko.toast
 import java.util.*
 
 class MainActivity : AppCompatActivity() {
@@ -81,6 +82,16 @@ class MainActivity : AppCompatActivity() {
     fun buildTrainerCard(view: View) {
         var intent = Intent(this, TrainerCardActivity::class.java)
 
+        if (    pokemon1.text.equals(resources.getString(R.string.pokemon_1)) ||
+                pokemon2.text.equals(resources.getString(R.string.pokemon_2)) ||
+                pokemon3.text.equals(resources.getString(R.string.pokemon_3)) ||
+                pokemon4.text.equals(resources.getString(R.string.pokemon_4)) ||
+                pokemon5.text.equals(resources.getString(R.string.pokemon_5)) ||
+                pokemon6.text.equals(resources.getString(R.string.pokemon_6))){
+            toast("Please make a full team.")
+            return;
+        }
+
         intent.putExtra("Team", mTeam)
 
         startActivity(intent)
@@ -138,5 +149,29 @@ class MainActivity : AppCompatActivity() {
         }
 
         super.onActivityResult(requestCode, resultCode, data)
+    }
+
+    fun delete1(view: View){
+        pokemon1.text = resources.getString(R.string.pokemon_1)
+    }
+
+    fun delete2(view: View){
+        pokemon2.text = resources.getString(R.string.pokemon_2)
+    }
+
+    fun delete3(view: View){
+        pokemon3.text = resources.getString(R.string.pokemon_3)
+    }
+
+    fun delete4(view: View){
+        pokemon4.text = resources.getString(R.string.pokemon_4)
+    }
+
+    fun delete5(view: View){
+        pokemon5.text = resources.getString(R.string.pokemon_5)
+    }
+
+    fun delete6(view: View){
+        pokemon6.text = resources.getString(R.string.pokemon_6)
     }
 }

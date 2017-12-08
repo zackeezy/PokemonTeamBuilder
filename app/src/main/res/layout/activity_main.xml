@@ -7,24 +7,6 @@
     tools:context="edu.harding.pokemonteambuilder.MainActivity">
 
     <Button
-        android:id="@+id/button3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginTop="8dp"
-        android:onClick="goToList"
-        android:text="Go To List"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button"
-        app:layout_constraintVertical_bias="0.217"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp" />
-
-    <Button
         android:id="@+id/button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -37,8 +19,8 @@
 
     <android.support.v7.widget.Toolbar
         android:id="@+id/toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
+        android:layout_width="0dp"
+        android:layout_height="56dp"
         android:background="?attr/colorPrimary"
         android:elevation="4dp"
         android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
@@ -71,8 +53,8 @@
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/choose"
-                android:onClick="pokemonChoose"
+                android:text="@string/delete"
+                android:onClick="delete1"
                 android:tag="@string/pokemon_1"
                 app:layout_constraintRight_toRightOf="parent"
                 tools:layout_editor_absoluteY="81dp" />
@@ -94,8 +76,8 @@
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/choose"
-                android:onClick="pokemonChoose"
+                android:text="@string/delete"
+                android:onClick="delete2"
                 android:tag="@string/pokemon_2"
                 app:layout_constraintRight_toRightOf="parent"
                 tools:layout_editor_absoluteY="81dp" />
@@ -117,8 +99,8 @@
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/choose"
-                android:onClick="pokemonChoose"
+                android:text="@string/delete"
+                android:onClick="delete3"
                 android:tag="@string/pokemon_3"
                 app:layout_constraintRight_toRightOf="parent"
                 tools:layout_editor_absoluteY="81dp" />
@@ -140,8 +122,8 @@
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/choose"
-                android:onClick="pokemonChoose"
+                android:text="@string/delete"
+                android:onClick="delete4"
                 android:tag="@string/pokemon_4"
                 app:layout_constraintRight_toRightOf="parent"
                 tools:layout_editor_absoluteY="81dp" />
@@ -163,8 +145,8 @@
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/choose"
-                android:onClick="pokemonChoose"
+                android:text="@string/delete"
+                android:onClick="delete5"
                 android:tag="@string/pokemon_5"
                 app:layout_constraintRight_toRightOf="parent"
                 tools:layout_editor_absoluteY="81dp" />
@@ -186,12 +168,22 @@
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/choose"
-                android:onClick="pokemonChoose"
+                android:text="@string/delete"
+                android:onClick="delete6"
                 android:tag="@string/pokemon_6"
                 app:layout_constraintRight_toRightOf="parent"
                 tools:layout_editor_absoluteY="81dp" />
         </LinearLayout>
     </LinearLayout>
+
+    <Button
+        android:id="@+id/choosePokemon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="pokemonChoose"
+        android:text="@string/add_a_pokemon"
+        app:layout_constraintTop_toBottomOf="@+id/pokemonList"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent" />
 
 </android.support.constraint.ConstraintLayout>
