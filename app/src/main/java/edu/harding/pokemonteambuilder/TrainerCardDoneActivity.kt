@@ -880,14 +880,16 @@ class TrainerCardDoneActivity : AppCompatActivity() {
                 pokemon6Bitmap = (resources.getDrawable(mPokemon[index],null) as BitmapDrawable).bitmap
             }
         }
-        var scaledUserImage: Bitmap = Bitmap.createScaledBitmap(mUserImage, 60, 60, true)
-        canvas.drawBitmap(pokemon1Bitmap,41.0f,87.0f, Paint())
-        canvas.drawBitmap(pokemon2Bitmap,41.0f,139.0f, Paint())
-        canvas.drawBitmap(pokemon3Bitmap,41.0f,191.0f, Paint())
-        canvas.drawBitmap(pokemon4Bitmap,73.0f,87.0f, Paint())
-        canvas.drawBitmap(pokemon5Bitmap,73.0f,139.0f, Paint())
-        canvas.drawBitmap(pokemon6Bitmap,73.0f,191.0f, Paint())
-        canvas.drawBitmap(scaledUserImage,13.0f,47.0f, Paint())
+        var scaledUserImage: Bitmap = Bitmap.createScaledBitmap(mUserImage, 180, 180, true)
+        canvas.drawBitmap(pokemon1Bitmap,230.0f,110.0f, Paint())
+        canvas.drawBitmap(pokemon2Bitmap,385.0f,110.0f, Paint())
+        canvas.drawBitmap(pokemon3Bitmap,525.0f,110.0f, Paint())
+        canvas.drawBitmap(pokemon4Bitmap,230.0f,196.0f, Paint())
+        canvas.drawBitmap(pokemon5Bitmap,385.0f,196.0f, Paint())
+        canvas.drawBitmap(pokemon6Bitmap,525.0f,196.0f, Paint())
+        canvas.drawBitmap(scaledUserImage,33.0f,123.0f, Paint())
+
+
 
         trainerCard.setImageDrawable(BitmapDrawable(resources,mutableBmp))
     }
