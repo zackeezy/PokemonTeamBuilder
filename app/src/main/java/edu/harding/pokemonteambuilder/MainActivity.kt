@@ -10,6 +10,7 @@ import android.support.v7.widget.Toolbar
 import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
+import kotlinx.android.synthetic.main.activity_main.*
 import org.jetbrains.anko.doAsync
 import java.util.*
 
@@ -108,9 +109,26 @@ class MainActivity : AppCompatActivity() {
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         if(resultCode == 0){
-            var pokemon: CustomPokemon = data!!.extras["Pokemon"] as CustomPokemon
-            var num: Int = data!!.extras["pokemon"] as Int
-            
+            var pokemon: String = data!!.extras["Pokemon"] as String
+
+            if(pokemon1.text.equals(resources.getString(R.string.pokemon_1))){
+                pokemon1.text = data.extras["Pokemon"] as String
+            }
+            else if(pokemon2.text.equals(resources.getString(R.string.pokemon_2))){
+                pokemon2.text = data.extras["Pokemon"] as String
+            }
+            else if(pokemon3.text.equals(resources.getString(R.string.pokemon_3))){
+                pokemon3.text = data.extras["Pokemon"] as String
+            }
+            else if(pokemon4.text.equals(resources.getString(R.string.pokemon_4))){
+                pokemon4.text = data.extras["Pokemon"] as String
+            }
+            else if(pokemon5.text.equals(resources.getString(R.string.pokemon_5))){
+                pokemon5.text = data.extras["Pokemon"] as String
+            }
+            else if(pokemon6.text.equals(resources.getString(R.string.pokemon_6))){
+                pokemon6.text = data.extras["Pokemon"] as String
+            }
         }
 
         super.onActivityResult(requestCode, resultCode, data)

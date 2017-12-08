@@ -2,12 +2,14 @@ package edu.harding.pokemonteambuilder
 
 import android.content.Intent
 import android.graphics.Bitmap
+import android.graphics.BitmapFactory
 import android.graphics.Canvas
 import android.graphics.Paint
 import android.graphics.drawable.BitmapDrawable
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import kotlinx.android.synthetic.main.activity_trainer_card_done.*
 import java.util.*
 
 class TrainerCardDoneActivity : AppCompatActivity() {
@@ -26,7 +28,9 @@ class TrainerCardDoneActivity : AppCompatActivity() {
 
         mTeam = intent.extras["Team"] as PokemonTeam
 
-        mUserImage = (intent.extras["userImage"] as TrainerCardActivity.BitmapSerializable).bitmap
+        var byteArray = intent.getByteArrayExtra("userImage")
+
+        mUserImage = BitmapFactory.decodeByteArray(byteArray,0,byteArray.size)
 
         mTemplate = (resources.getDrawable(intent.extras["Card"] as Int, null) as BitmapDrawable).bitmap
 
@@ -279,7 +283,7 @@ class TrainerCardDoneActivity : AppCompatActivity() {
         mPokemon.add(R.drawable.pupitar)
         mPokemon.add(R.drawable.tyranitar)
         mPokemon.add(R.drawable.lugia)
-        mPokemon.add(R.drawable.ho-oh)
+        mPokemon.add(R.drawable.ho_oh)
         mPokemon.add(R.drawable.celebi)
         mPokemon.add(R.drawable.treecko)
         mPokemon.add(R.drawable.grovyle)
@@ -441,12 +445,8 @@ class TrainerCardDoneActivity : AppCompatActivity() {
         mPokemon.add(R.drawable.rampardos)
         mPokemon.add(R.drawable.shieldon)
         mPokemon.add(R.drawable.bastiodon)
-        mPokemon.add(R.drawable.burmy_g)
-        mPokemon.add(R.drawable.burmy_s)
-        mPokemon.add(R.drawable.burmy_t)
-        mPokemon.add(R.drawable.wormadam_g)
-        mPokemon.add(R.drawable.wormadam_s)
-        mPokemon.add(R.drawable.wormadam_t)
+        mPokemon.add(R.drawable.burmy)
+        mPokemon.add(R.drawable.wormadam)
         mPokemon.add(R.drawable.mothim)
         mPokemon.add(R.drawable.combee)
         mPokemon.add(R.drawable.vespiquen)
@@ -507,7 +507,7 @@ class TrainerCardDoneActivity : AppCompatActivity() {
         mPokemon.add(R.drawable.glaceon)
         mPokemon.add(R.drawable.gliscor)
         mPokemon.add(R.drawable.mamoswine)
-        mPokemon.add(R.drawable.porygon-z)
+        mPokemon.add(R.drawable.porygon_z)
         mPokemon.add(R.drawable.gallade)
         mPokemon.add(R.drawable.probopass)
         mPokemon.add(R.drawable.dusknoir)
@@ -702,7 +702,7 @@ class TrainerCardDoneActivity : AppCompatActivity() {
         mPokemon.add(R.drawable.vivillon)
         mPokemon.add(R.drawable.litleo)
         mPokemon.add(R.drawable.pyroar)
-        mPokemon.add(R.drawable.flabébé)
+        mPokemon.add(R.drawable.flabebe)
         mPokemon.add(R.drawable.floette)
         mPokemon.add(R.drawable.florges)
         mPokemon.add(R.drawable.skiddo)
@@ -815,9 +815,9 @@ class TrainerCardDoneActivity : AppCompatActivity() {
         mPokemon.add(R.drawable.bruxish)
         mPokemon.add(R.drawable.drampa)
         mPokemon.add(R.drawable.dhelmise)
-        mPokemon.add(R.drawable.jangmo-o)
-        mPokemon.add(R.drawable.hakamo-o)
-        mPokemon.add(R.drawable.kommo-o)
+        mPokemon.add(R.drawable.jangmo_o)
+        mPokemon.add(R.drawable.hakamo_o)
+        mPokemon.add(R.drawable.kommo_o)
         mPokemon.add(R.drawable.tapukoko)
         mPokemon.add(R.drawable.tapulele)
         mPokemon.add(R.drawable.tapubulu)
@@ -836,10 +836,14 @@ class TrainerCardDoneActivity : AppCompatActivity() {
         mPokemon.add(R.drawable.necrozma)
         mPokemon.add(R.drawable.magearna)
         mPokemon.add(R.drawable.marshadow)
+        mPokemon.add(R.drawable.poipole)
+        mPokemon.add(R.drawable.naganadel)
+        mPokemon.add(R.drawable.stakataka)
+        mPokemon.add(R.drawable.blacephalon)
+        mPokemon.add(R.drawable.zeraora)
 
-        var canvas: Canvas = Canvas()
+        var canvas: Canvas = Canvas(mTemplate)
 
-        canvas.setBitmap(mTemplate)
         var pokemon1Bitmap: Bitmap? = null
         var pokemon2Bitmap: Bitmap? = null
         var pokemon3Bitmap: Bitmap? = null
@@ -848,27 +852,27 @@ class TrainerCardDoneActivity : AppCompatActivity() {
         var pokemon6Bitmap: Bitmap? = null
         var array = resources.getStringArray(R.array.pokedex)
         for(i:String in array){
-            if(mTeam!!.mPokemon1?.name == i){
+            if(mTeam!!.mPokemon1 == i){
                 var index = array.indexOf(i)
                 pokemon1Bitmap = (resources.getDrawable(mPokemon[index],null) as BitmapDrawable).bitmap
             }
-            else if(mTeam!!.mPokemon2?.name == i){
+            else if(mTeam!!.mPokemon2 == i){
                 var index = array.indexOf(i)
                 pokemon2Bitmap = (resources.getDrawable(mPokemon[index],null) as BitmapDrawable).bitmap
             }
-            else if(mTeam!!.mPokemon3?.name == i){
+            else if(mTeam!!.mPokemon3 == i){
                 var index = array.indexOf(i)
                 pokemon3Bitmap = (resources.getDrawable(mPokemon[index],null) as BitmapDrawable).bitmap
             }
-            else if(mTeam!!.mPokemon4?.name == i){
+            else if(mTeam!!.mPokemon4 == i){
                 var index = array.indexOf(i)
                 pokemon4Bitmap = (resources.getDrawable(mPokemon[index],null) as BitmapDrawable).bitmap
             }
-            else if(mTeam!!.mPokemon5?.name == i){
+            else if(mTeam!!.mPokemon5 == i){
                 var index = array.indexOf(i)
                 pokemon5Bitmap = (resources.getDrawable(mPokemon[index],null) as BitmapDrawable).bitmap
             }
-            else if(mTeam!!.mPokemon6?.name == i){
+            else if(mTeam!!.mPokemon6 == i){
                 var index = array.indexOf(i)
                 pokemon6Bitmap = (resources.getDrawable(mPokemon[index],null) as BitmapDrawable).bitmap
             }
@@ -882,7 +886,7 @@ class TrainerCardDoneActivity : AppCompatActivity() {
         canvas.drawBitmap(pokemon6Bitmap,73 as Float,191 as Float, Paint())
         canvas.drawBitmap(scaledUserImage,13 as Float,47 as Float, Paint())
 
-
+        trainerCard.setImageDrawable(BitmapDrawable(resources,mTemplate))
     }
 
     fun backToMainActivity(view: View){

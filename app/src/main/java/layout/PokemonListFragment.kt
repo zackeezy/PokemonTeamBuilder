@@ -72,13 +72,15 @@ class PokemonListFragment() : Fragment() {
 //                okButton { }
 //            }.show()
 //=======
-        doAsync {
-            var adapter = PokemonAdapter(CustomPokemon.pokemonListToCustomPokemonList(api.fetchAll()))
+        var list = resources.getStringArray(R.array.pokedex).toList()
+        var adapter = PokemonAdapter(list as ArrayList)
+        recyclerView.adapter = adapter
+        /*doAsync {
             uiThread {
-                recyclerView.adapter = adapter
+
                 progressBar.visibility = View.GONE
             }
-        }
+        }*/
     }
 
     // For RecyclerView
@@ -88,48 +90,34 @@ class PokemonListFragment() : Fragment() {
 
         private lateinit var mPokemon: CustomPokemon
         private val mNameLabel: TextView
-        private val mTypeLabel: TextView
 
         init {
             itemView.setOnClickListener(this)
 
             mNameLabel = itemView.findViewById(R.id.pokemon_name_textview) as TextView
-            mTypeLabel = itemView.findViewById(R.id.pokemon_type_textview) as TextView
         }
 
 
-        fun bind(p: CustomPokemon) {
-            var typeString: String
-
-            mPokemon = p;
-            mNameLabel.text = p.name
+        fun bind(p: String) {
+            mNameLabel.text = p
             mNameLabel.textColor = Color.WHITE
-
-            if (p.types.size == 2)
-                typeString = p.types[0] + "/" + p.types[1]
-            else
-                typeString = p.types[0]
-
-            mTypeLabel.text = typeString
-            mTypeLabel.textColor = Color.WHITE
         }
 
 
         override fun onClick(view: View?) {
-            var name = pokemon_name_textview.text.toString()
-            var type = pokemon_type_textview.text.split("/")
-            var pokemon = CustomPokemon(name, type as ArrayList<String>)
+            /*var name = pokemon_name_textview.text.toString()
+            //var type = pokemon_type_textview.text.split("/")
+            var pokemon = CustomPokemon(name, "")*/
+            var name = view?.findViewById<TextView>(R.id.pokemon_name_textview)?.text
             var i = Intent()
-            i.putExtra("Pokemon", pokemon as Serializable)
-            i.putExtra("pokemon", (activity as PokemonListActivity).intent.extras["pokemon"] as Int)
-            var pla = activity as PokemonListActivity
-            pla.setResult(0,i)
-            pla.finish()
+            i.putExtra("Pokemon", name)
+            activity.setResult(0,i)
+            activity.finish()
         }
     }
 
     // For RecyclerView
-    private inner class PokemonAdapter(private val mPokemonList: ArrayList<CustomPokemon>) :
+    private inner class PokemonAdapter(private val mPokemonList: ArrayList<String>) :
             RecyclerView.Adapter<PokemonHolder>() {
 
         override fun getItemCount(): Int = mPokemonList.count()
