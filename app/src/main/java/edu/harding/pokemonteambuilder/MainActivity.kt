@@ -38,10 +38,6 @@ class MainActivity : AppCompatActivity() {
             goToAboutActivity()
             true
         }
-        R.id.settings_item -> {
-            goToSettingsActivity()
-            true
-        }
         else -> {
             super.onOptionsItemSelected(item)
         }
@@ -82,12 +78,12 @@ class MainActivity : AppCompatActivity() {
     fun buildTrainerCard(view: View) {
         var intent = Intent(this, TrainerCardActivity::class.java)
 
-        if (    pokemon1.text.equals(resources.getString(R.string.pokemon_1)) ||
+        if (pokemon1.text.equals(resources.getString(R.string.pokemon_1)) ||
                 pokemon2.text.equals(resources.getString(R.string.pokemon_2)) ||
                 pokemon3.text.equals(resources.getString(R.string.pokemon_3)) ||
                 pokemon4.text.equals(resources.getString(R.string.pokemon_4)) ||
                 pokemon5.text.equals(resources.getString(R.string.pokemon_5)) ||
-                pokemon6.text.equals(resources.getString(R.string.pokemon_6))){
+                pokemon6.text.equals(resources.getString(R.string.pokemon_6))) {
             toast("Please make a full team.")
             return;
         }
@@ -97,24 +93,8 @@ class MainActivity : AppCompatActivity() {
         startActivity(intent)
     }
 
-    fun tryLoadDB(view: View) {
-        var db = PokemonDatabase(getPreferences(Context.MODE_PRIVATE))
-        var pokemonList = db.load()
-        Log.d("DB", pokemonList.toString())
-    }
-
-    fun goToList(view: View) {
-        val intent = Intent(this, PokemonListActivity::class.java)
-        startActivity(intent)
-    }
-
     private fun goToAboutActivity() {
         var intent = Intent(this, AboutActivity::class.java)
-        startActivity(intent)
-    }
-
-    private fun goToSettingsActivity() {
-        var intent = Intent(this, SettingsActivity::class.java)
         startActivity(intent)
     }
 
